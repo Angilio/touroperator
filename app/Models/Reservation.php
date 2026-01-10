@@ -11,6 +11,18 @@ class Reservation extends Model
         'dateStart',
         'dateEnd',
         'excursion_id',
-        'user_id'
+        'type_voyage_id',
+        'contact',
+        'email'
     ];
+
+    public function excursion()
+    {
+        return $this->belongsTo(Excursion::class, 'excursion_id');
+    }
+
+    public function type_voyage()
+    {
+        return $this->belongsTo(type_voyage::class, 'type_voyage_id');
+    }
 }
