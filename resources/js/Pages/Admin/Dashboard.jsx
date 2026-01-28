@@ -3,9 +3,9 @@ import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 
 // Import des composants de chaque menu
-import Statistique from './Statistique';
-import Admin from './Admin';
-import Excursions from './Excursions';
+import Statistique from './Statistique/Statistique';
+import Admin from './Admin/Admin';
+import Excursions from './Excursions/Excursions';
 
 // Import des icônes Lucide
 import { BarChart2, User, Truck } from 'lucide-react';
