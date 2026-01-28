@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { useState } from 'react';
+import { usePage } from '@inertiajs/react';
 
 // Import des composants de chaque menu
 import Statistique from './Statistique/Statistique';
@@ -11,6 +12,7 @@ import Excursions from './Excursions/Excursions';
 import { BarChart2, User, Truck } from 'lucide-react';
 
 export default function Dashboard() {
+    const { admins = [] } = usePage().props;
     const [activeMenu, setActiveMenu] = useState('stat1');
 
     const renderContent = () => {
@@ -18,7 +20,7 @@ export default function Dashboard() {
             case 'stat1':
                 return <Statistique />;
             case 'stat2':
-                return <Admin />;
+                return <Admin admins={admins} />;
             case 'stat3':
                 return <Excursions />;
             default:

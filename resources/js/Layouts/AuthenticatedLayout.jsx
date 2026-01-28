@@ -26,8 +26,8 @@ export default function AuthenticatedLayout({ header, children }) {
                             {/* Desktop Nav */}
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink
-                                    href={route('dashboard')}
-                                    active={route().current('dashboard')}
+                                    href={route('dashboard.admins')}
+                                    active={route().current('dashboard.admins')}
                                     className="text-blue-700 hover:text-blue-900"
                                 >
                                     Tableau de board
@@ -115,8 +115,8 @@ export default function AuthenticatedLayout({ header, children }) {
                 <div className={`${showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden`}>
                     <div className="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
-                            href={route('dashboard')}
-                            active={route().current('dashboard')}
+                            href={route('dashboard.admins')}
+                            active={route().current('dashboard.admins')}
                             className="text-blue-700 hover:text-blue-900"
                         >
                             Tableau de board
