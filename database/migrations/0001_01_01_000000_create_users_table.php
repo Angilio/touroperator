@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('firstname');
             $table->string('contact');
             $table->string('email')->unique();
-            $table->string('pdp');
+            $table->string('pdp')->nullable();
             $table->string('nation');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
