@@ -3,16 +3,16 @@ import { Head } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import { usePage } from '@inertiajs/react';
 
-// Import des composants de chaque menu
 import Statistique from './Statistique/Statistique';
 import Admin from './Admin/Admin';
 import Excursions from './Excursions/Excursions';
+import ExcursionType from './ExcursionType/ExcursionType';
 
-// Import des icônes Lucide
-import { BarChart2, User, Truck } from 'lucide-react';
+import { BarChart2, User, Truck, Tag } from 'lucide-react';
 
 export default function Dashboard() {
     const { admins = [] } = usePage().props;
+    const { types = [] } = usePage().props;
     const [activeMenu, setActiveMenu] = useState(() => {
         return localStorage.getItem('dashboardActiveMenu') || 'stat1';
     });
@@ -28,6 +28,8 @@ export default function Dashboard() {
             case 'stat2':
                 return <Admin admins={admins} />;
             case 'stat3':
+                return <ExcursionType types={types} />;
+            case 'stat4':
                 return <Excursions />;
             default:
                 return <Statistique />;
@@ -37,7 +39,8 @@ export default function Dashboard() {
     const menuItems = [
         { id: 'stat1', name: 'Statistique', icon: BarChart2 },
         { id: 'stat2', name: 'Admin', icon: User },
-        { id: 'stat3', name: 'Excursions', icon: Truck },
+        { id: 'stat3', name: "Type d'excursion", icon: Tag },
+        { id: 'stat4', name: 'Excursions', icon: Truck },
     ];
 
     return (

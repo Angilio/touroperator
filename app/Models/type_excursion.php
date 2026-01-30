@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Excursion;
 
-class type_excursion extends Model
+class Type_excursion extends Model
 {
     protected $fillable = [
         'type',

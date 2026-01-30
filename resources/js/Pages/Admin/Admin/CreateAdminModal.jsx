@@ -36,7 +36,7 @@ export default function CreateAdminModal({ show, onClose }) {
     return (
         <Modal show={show} onClose={onClose} maxWidth="lg">
             <form onSubmit={submit} className="relative p-6">
-                  <button
+                <button
                     type="button"
                     onClick={closeModal}
                     className="absolute right-4 top-4 rounded-full p-1 text-blue-600 hover:bg-blue-100"

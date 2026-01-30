@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExcursionTypeController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -31,8 +32,10 @@ Route::post('/admin/set-password/{id}', [AdminController::class, 'updatePassword
     ->name('admin.password.update');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])
-        ->name('dashboard.admins');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.admins');
+    Route::get('/excursion-types', [ExcursionTypeController::class, 'index'])->name('excursion-types.index');
+    Route::post('/excursion-types', [ExcursionTypeController::class, 'store'])->name('excursion-types.store');
+    Route::put('/excursion-types/{id}', [ExcursionTypeController::class, 'update'])->name('excursion-types.update');
 });
 
 Route::middleware('auth')->group(function () {
