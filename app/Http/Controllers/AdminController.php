@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
+use App\Http\Requests\StoreAdminRequest;
+use App\Http\Requests\UpdateAdminPasswordRequest;
 
 class AdminController extends Controller
 {
@@ -31,17 +33,10 @@ class AdminController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreAdminRequest $request)
     {
-        $validated = $request->validate([
-            'name'      => 'required|string|max:255',
-            'firstname' => 'required|string|max:255',
-            'contact'   => 'required|string|max:50',
-            'nation'    => 'required|string|max:100',
-            'email'     => 'required|email|unique:users,email',
-        ]);
+        $validated = $request->validated();
 
-        // Mot de passe temporaire
         $temporaryPassword = str()->random(12);
 
         $user = User::create([
@@ -53,7 +48,6 @@ class AdminController extends Controller
             'password'  => Hash::make($temporaryPassword),
         ]);
 
-        // (optionnel) rôle admin si tu utilises Spatie
         $user->assignRole('admin');
 
         // Lien de vérification signé (30 minutes)
@@ -122,13 +116,14 @@ class AdminController extends Controller
     /**
      * Enregistrer le nouveau mot de passe
      */
-    public function updatePassword(Request $request, $id)
+    public function updatePassword(UpdateAdminPasswordRequest $request, $id)
     {
         $user = User::findOrFail($id);
 
-        $request->validate([
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        if ($user->password_set) {
+            return redirect()->route('login')
+                ->with('error', 'Le mot de passe est déjà défini.');
+        }
 
         $user->password = Hash::make($request->password);
         $user->password_set = true;

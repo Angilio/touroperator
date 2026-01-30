@@ -1,12 +1,26 @@
 import { Plus, User } from 'lucide-react';
 import { useState } from 'react';
+import { usePage } from '@inertiajs/react';
 import CreateAdminModal from './CreateAdminModal';
 
 export default function Admin({ admins = [] }) {
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const { flash } = usePage().props;
 
     return (
         <div className="text-blue-800">
+            {flash?.success && (
+                <div className="mb-6 rounded-lg border border-green-400 bg-green-100 px-4 py-3 text-green-800">
+                    {flash.success}
+                </div>
+            )}
+
+            {flash?.error && (
+                <div className="mb-6 rounded-lg border border-red-400 bg-red-100 px-4 py-3 text-red-800">
+                    {flash.error}
+                </div>
+            )}
+            
             {/* Header */}
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <h3 className="text-lg font-semibold">Liste des admins</h3>

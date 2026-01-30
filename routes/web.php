@@ -15,11 +15,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])
-        ->name('dashboard.admins');
-});
-
 Route::post('/admins', [AdminController::class, 'store'])
     ->name('admins.store');
 
@@ -34,6 +29,11 @@ Route::get('/admin/set-password/{id}', [AdminController::class, 'passwordForm'])
 
 Route::post('/admin/set-password/{id}', [AdminController::class, 'updatePassword'])
     ->name('admin.password.update');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])
+        ->name('dashboard.admins');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
