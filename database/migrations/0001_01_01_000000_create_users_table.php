@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('pdp')->nullable();
             $table->string('nation');
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('password_set')->default(false);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

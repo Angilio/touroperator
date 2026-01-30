@@ -20,6 +20,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('dashboard.admins');
 });
 
+Route::post('/admins', [AdminController::class, 'store'])
+    ->name('admins.store');
+
+// Vérification email (lien signé)
+Route::get('/admin/verify/{id}', [AdminController::class, 'verify'])
+    ->name('admin.verify')
+    ->middleware('signed');
+
+// Définir le mot de passe
+Route::get('/admin/set-password/{id}', [AdminController::class, 'passwordForm'])
+    ->name('admin.password.form');
+
+Route::post('/admin/set-password/{id}', [AdminController::class, 'updatePassword'])
+    ->name('admin.password.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
