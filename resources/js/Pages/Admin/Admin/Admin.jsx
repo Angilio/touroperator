@@ -1,13 +1,20 @@
 import { Plus, User } from 'lucide-react';
+import { useState } from 'react';
+import CreateAdminModal from './CreateAdminModal';
 
 export default function Admin({ admins = [] }) {
+    const [showCreateModal, setShowCreateModal] = useState(false);
+
     return (
         <div className="text-blue-800">
             {/* Header */}
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <h3 className="text-lg font-semibold">Liste des admins</h3>
 
-                <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700 sm:w-auto">
+                <button
+                    onClick={() => setShowCreateModal(true)}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700 sm:w-auto"
+                >
                     <Plus size={16} />
                     Ajouter un admin
                 </button>
@@ -63,6 +70,10 @@ export default function Admin({ admins = [] }) {
                     </div>
                 )}
             </div>
+            <CreateAdminModal
+                show={showCreateModal}
+                onClose={() => setShowCreateModal(false)}
+            />
         </div>
     );
 }

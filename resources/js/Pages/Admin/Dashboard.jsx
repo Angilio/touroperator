@@ -1,6 +1,6 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePage } from '@inertiajs/react';
 
 // Import des composants de chaque menu
@@ -13,7 +13,13 @@ import { BarChart2, User, Truck } from 'lucide-react';
 
 export default function Dashboard() {
     const { admins = [] } = usePage().props;
-    const [activeMenu, setActiveMenu] = useState('stat1');
+    const [activeMenu, setActiveMenu] = useState(() => {
+        return localStorage.getItem('dashboardActiveMenu') || 'stat1';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('dashboardActiveMenu', activeMenu);
+    }, [activeMenu]);
 
     const renderContent = () => {
         switch (activeMenu) {

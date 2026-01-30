@@ -4,8 +4,15 @@ import './bootstrap';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'Tour Operator';
+
+NProgress.configure({
+    showSpinner: false,
+    trickleSpeed: 200,
+});
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -20,6 +27,7 @@ createInertiaApp({
         root.render(<App {...props} />);
     },
     progress: {
-        color: '#4B5563',
+        color: '#2563eb',
+        showSpinner: false,
     },
 });
