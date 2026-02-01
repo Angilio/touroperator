@@ -11,14 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('excursions', function (Blueprint $table) {
+        Schema::create('excursion_galleries', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('short_description');
-            $table->text('description');
-            $table->decimal('price');
-            $table->string('video');
-            $table->foreignId('type_excursion_id')->constrained('type_excursions')->onDelete('cascade');
+            
+            $table->foreignId('excursion_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            $table->string('image_path');
+            $table->string('caption')->nullable();
+            $table->integer('order')->nullable();
+
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('excursions');
+        Schema::dropIfExists('excursion_galleries');
     }
 };
