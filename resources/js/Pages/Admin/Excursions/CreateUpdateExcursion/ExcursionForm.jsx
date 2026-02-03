@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Head } from '@inertiajs/react';
+import { Head, router } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import TextInput from '@/Components/TextInput';
 import InputLabel from '@/Components/InputLabel';
@@ -72,7 +72,24 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
 
     return (
         <AuthenticatedLayout header={<h2 className="text-xl font-semibold text-blue-800">{mode === 'create' ? 'Ajouter une excursion' : 'Modifier excursion'}</h2>}>
-            <Head title={mode === 'create' ? 'Ajouter Excursion' : 'Modifier Excursion'} />
+            <Head title={mode === 'create' ? 'Ajouter un excursion' : 'Modifier l\'excursion'} />
+
+            <div className="mb-4">
+                <button
+                    type="button"
+                    onClick={() => window.history.back()} // <-- ici
+                    className="flex items-center text-blue-600 hover:text-blue-800 transition"
+                >
+                    <span className="mr-2 text-2xl">←</span>
+                    <span>Retour</span>
+                </button>
+            </div>
+
+            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-lg font-semibold text-blue-600">
+                    {mode === 'create' ? 'Ajouter Excursion' : 'Modifier Excursion'}
+                </h3>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title */}
@@ -94,8 +111,16 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
 
                     <div
                         onClick={() => fileInputRef.current.click()}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => {
+                            e.preventDefault();
+                            const files = Array.from(e.dataTransfer.files);
+                            setFormData((prev) => ({ ...prev, images: files }));
+                            const previews = files.map((file) => URL.createObjectURL(file));
+                            setImagePreviews(previews);
+                        }}
                         className="mt-1 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-6 text-center hover:border-blue-400 hover:bg-blue-50 transition"
-                    >
+                        >
                         <p className="text-sm text-gray-500">
                             Cliquez ici ou glissez vos images pour les ajouter
                         </p>
@@ -103,8 +128,8 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
                             type="button"
                             className="mt-2 rounded bg-blue-600 px-4 py-1 text-sm text-white hover:bg-blue-700 transition"
                             onClick={(e) => {
-                                e.stopPropagation();
-                                fileInputRef.current.click();
+                            e.stopPropagation();
+                            fileInputRef.current.click();
                             }}
                         >
                             Sélectionner des fichiers
@@ -200,12 +225,18 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
 
                 {/* Video */}
                 <div>
-                    <InputLabel value="Vidéo (facultatif)" htmlFor="video" />
+                    <InputLabel value="Vidéo" htmlFor="video" />
 
                     <div
                         onClick={() => videoInputRef.current.click()}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={(e) => {
+                            e.preventDefault();
+                            const file = e.dataTransfer.files[0];
+                            if (file) setFormData((prev) => ({ ...prev, video: file }));
+                        }}
                         className="mt-1 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-6 text-center hover:border-blue-400 hover:bg-blue-50 transition"
-                    >
+                        >
                         <p className="text-sm text-gray-500">
                             Cliquez ici ou glissez votre vidéo pour l'ajouter
                         </p>
@@ -213,8 +244,8 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
                             type="button"
                             className="mt-2 rounded bg-blue-600 px-4 py-1 text-sm text-white hover:bg-blue-700 transition"
                             onClick={(e) => {
-                                e.stopPropagation();
-                                videoInputRef.current.click();
+                            e.stopPropagation();
+                            videoInputRef.current.click();
                             }}
                         >
                             Sélectionner un fichier
