@@ -13,7 +13,7 @@ export default function AuthenticatedLayout({ header, children }) {
     return (
         <div className="min-h-screen bg-blue-50 flex flex-col">
             {/* NAVIGATION */}
-            <nav className="border-b border-blue-300 bg-blue-100">
+            <nav className="fixed top-0 left-0 right-0 z-50 border-b border-blue-300 bg-blue-100">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between items-center">
                         {/* Logo + Desktop Nav */}
@@ -100,11 +100,13 @@ export default function AuthenticatedLayout({ header, children }) {
             </nav>
 
             {/* MAIN CONTENT */}
-            <div className="py-12">
+            <div className="pt-24 pb-12">
                 <div className="mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-6 relative">
                     {/* Sidebar Desktop (lg+) */}
                     <div className="hidden lg:block lg:w-64">
-                        <SidebarMenu />
+                        <div className="sticky top-24">
+                            <SidebarMenu />
+                        </div>
                     </div>
 
                     {/* Page content */}
