@@ -4,6 +4,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import TextInput from '@/Components/TextInput';
 import InputLabel from '@/Components/InputLabel';
 import InputError from '@/Components/InputError';
+import RichTextEditor from '@/Components/RichTextEditor';
 
 export default function ExcursionForm({ excursion = null, types = [], errors = {}, mode = 'create' }) {
     const [formData, setFormData] = useState({
@@ -152,27 +153,38 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
 
                 {/* Description */}
                 <div>
-                    <InputLabel value="Description complète" htmlFor="description" />
-                    <textarea
-                        name="description"
+                    <InputLabel value="Description complète" />
+
+                    <RichTextEditor
                         value={formData.description}
-                        onChange={handleChange}
-                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                        rows={4}
+                        onChange={(value) =>
+                            setFormData((prev) => ({ ...prev, description: value }))
+                        }
                     />
+
                     <InputError message={errors.description} className="mt-1" />
                 </div>
 
                 {/* Price */}
                 <div>
                     <InputLabel value="Prix" htmlFor="price" />
-                    <TextInput
-                        type="number"
-                        name="price"
-                        value={formData.price}
-                        onChange={handleChange}
-                        className="mt-1 block w-full"
-                    />
+
+                    <div className="relative mt-1">
+                        <TextInput
+                            type="number"
+                            name="price"
+                            value={formData.price}
+                            onChange={handleChange}
+                            className="block w-full pr-8"
+                            step="0.01"
+                            min="0"
+                        />
+
+                        <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+                            €
+                        </span>
+                    </div>
+
                     <InputError message={errors.price} className="mt-1" />
                 </div>
 

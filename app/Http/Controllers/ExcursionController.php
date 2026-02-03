@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Excursion;
+use App\Models\Type_excursion;
 
 class ExcursionController extends Controller
 {
@@ -18,6 +19,9 @@ class ExcursionController extends Controller
 
     public function create()
     {
-        return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm');
+        $types = Type_excursion::all();
+        return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
+            'types' => $types
+        ]);
     }
 }

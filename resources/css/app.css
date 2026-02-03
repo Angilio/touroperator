@@ -9,3 +9,21 @@
 #nprogress .peg {
     box-shadow: 0 0 10px #2563eb, 0 0 5px #2563eb;
 }
+
+/* Conteneur de l'éditeur */
+.quill-editor .ql-container {
+    min-height: 220px;   /* hauteur de départ */
+    max-height: 400px;   /* limite maximale */
+    overflow-y: auto;    /* scroll interne */
+}
+
+/* Zone de texte */
+.quill-editor .ql-editor {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Toolbar */
+.quill-editor .ql-toolbar {
+    border-bottom: 1px solid #e5e7eb;
+}
