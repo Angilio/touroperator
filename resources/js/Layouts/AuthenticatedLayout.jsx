@@ -110,7 +110,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
 
                     {/* Page content */}
-                    <main className="flex-1 bg-white rounded-lg shadow p-6">
+                    <main className="flex-1 w-full bg-white rounded-lg shadow p-6">
                         {children}
                     </main>
 

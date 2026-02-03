@@ -18,7 +18,7 @@ class Excursion extends Model
         'type_excursion_id'
     ];
 
-    public function type_chambre()
+    public function type_excursion()
     {
         return $this->belongsTo(Type_excursion::class, 'type_excursion_id');
     }

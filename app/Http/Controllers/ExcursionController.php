@@ -15,4 +15,9 @@ class ExcursionController extends Controller
             'excursions' => $excursions
         ]);
     }
+
+    public function create()
+    {
+        return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm');
+    }
 }
