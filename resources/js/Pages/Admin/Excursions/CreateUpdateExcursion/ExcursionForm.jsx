@@ -12,7 +12,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         short_description: excursion?.short_description || '',
         description: excursion?.description || '',
         price: excursion?.price || '',
-        video: excursion?.video || '',
+        video: null,
         type_excursion_id: excursion?.type_excursion_id || '',
         images: [], // fichiers upload
     });
@@ -20,6 +20,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
     const [imagePreviews, setImagePreviews] = useState([]);
 
     const fileInputRef = useRef();
+    const videoInputRef = useRef();
 
     // Gestion des champs
     const handleChange = (e) => {
@@ -53,11 +54,20 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
             data.append(`images[${index}]`, file);
         });
 
+        if (formData.video) {
+            data.append('video', formData.video);
+        }
+
         if (mode === 'create') {
             Inertia.post('/excursions', data);
         } else if (mode === 'edit' && excursion?.id) {
             Inertia.post(`/excursions/${excursion.id}`, data, { _method: 'PUT' });
         }
+    };
+
+    const handleVideoChange = (e) => {
+        const file = e.target.files[0];
+        setFormData((prev) => ({ ...prev, video: file }));
     };
 
     return (
@@ -190,13 +200,43 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
 
                 {/* Video */}
                 <div>
-                    <InputLabel value="Lien vidéo (facultatif)" htmlFor="video" />
-                    <TextInput
-                        name="video"
-                        value={formData.video}
-                        onChange={handleChange}
-                        className="mt-1 block w-full"
-                    />
+                    <InputLabel value="Vidéo (facultatif)" htmlFor="video" />
+
+                    <div
+                        onClick={() => videoInputRef.current.click()}
+                        className="mt-1 flex cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-6 text-center hover:border-blue-400 hover:bg-blue-50 transition"
+                    >
+                        <p className="text-sm text-gray-500">
+                            Cliquez ici ou glissez votre vidéo pour l'ajouter
+                        </p>
+                        <button
+                            type="button"
+                            className="mt-2 rounded bg-blue-600 px-4 py-1 text-sm text-white hover:bg-blue-700 transition"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                videoInputRef.current.click();
+                            }}
+                        >
+                            Sélectionner un fichier
+                        </button>
+                        <input
+                            type="file"
+                            ref={videoInputRef}
+                            onChange={handleVideoChange}
+                            className="hidden"
+                            accept="video/*"
+                        />
+                    </div>
+
+                    {/* Prévisualisation */}
+                    {formData.video && (
+                        <video
+                            src={URL.createObjectURL(formData.video)}
+                            controls
+                            className="mt-4 w-full max-w-md rounded-lg border"
+                        />
+                    )}
+
                     <InputError message={errors.video} className="mt-1" />
                 </div>
 
