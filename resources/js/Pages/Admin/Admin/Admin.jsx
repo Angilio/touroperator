@@ -1,6 +1,7 @@
 import { Plus, User } from 'lucide-react';
 import { useState } from 'react';
-import { usePage } from '@inertiajs/react';
+import { usePage, Head } from '@inertiajs/react';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import CreateAdminModal from './CreateAdminModal';
 
 export default function Admin({ admins = [] }) {
@@ -8,7 +9,11 @@ export default function Admin({ admins = [] }) {
     const { flash } = usePage().props;
 
     return (
-        <div className="text-blue-800">
+        <AuthenticatedLayout
+            header={<h2 className="text-xl font-semibold text-blue-800">Liste des admins</h2>}
+        >
+            <Head title="Admins" />
+
             {flash?.success && (
                 <div className="mb-6 rounded-lg border border-green-400 bg-green-100 px-4 py-3 text-green-800">
                     {flash.success}
@@ -20,17 +25,16 @@ export default function Admin({ admins = [] }) {
                     {flash.error}
                 </div>
             )}
-            
-            {/* Header */}
-            <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="text-lg font-semibold">Liste des admins</h3>
+
+            {/* Header interne si besoin */}
+            <div className="mb-6 text-blue-800 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <h3 className="text-lg font-semibold">Gestion des admins</h3>
 
                 <button
                     onClick={() => setShowCreateModal(true)}
                     className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700 sm:w-auto"
                 >
-                    <Plus size={16} />
-                    Ajouter un admin
+                    <Plus size={16} /> Ajouter un admin
                 </button>
             </div>
 
@@ -60,19 +64,13 @@ export default function Admin({ admins = [] }) {
                                 <h4 className="text-base font-semibold text-blue-800">
                                     {admin.name} {admin.firstname}
                                 </h4>
-
-                                <p className="text-sm text-blue-600 break-all">
-                                    {admin.email}
-                                </p>
-
+                                <p className="text-sm text-blue-600 break-all">{admin.email}</p>
                                 <div className="mt-2 space-y-1 text-sm text-blue-700">
                                     <p>
-                                        <span className="font-medium">Contact :</span>{' '}
-                                        {admin.contact}
+                                        <span className="font-medium">Contact :</span> {admin.contact}
                                     </p>
                                     <p>
-                                        <span className="font-medium">Nation :</span>{' '}
-                                        {admin.nation}
+                                        <span className="font-medium">Nation :</span> {admin.nation}
                                     </p>
                                 </div>
                             </div>
@@ -84,10 +82,11 @@ export default function Admin({ admins = [] }) {
                     </div>
                 )}
             </div>
+
             <CreateAdminModal
                 show={showCreateModal}
                 onClose={() => setShowCreateModal(false)}
             />
-        </div>
+        </AuthenticatedLayout>
     );
 }

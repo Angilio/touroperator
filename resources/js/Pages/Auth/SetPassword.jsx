@@ -1,4 +1,4 @@
-import { useForm } from '@inertiajs/react';
+import { useForm, Head } from '@inertiajs/react';
 import GuestLayout from '@/Layouts/GuestLayout';
 import TextInput from '@/Components/TextInput';
 import InputLabel from '@/Components/InputLabel';
@@ -17,6 +17,7 @@ export default function SetPassword({ userId }) {
 
     return (
         <GuestLayout>
+            <Head title="Password" />
             <div className="flex min-h-screen items-center justify-center bg-gray-100">
                 <form
                     onSubmit={submit}

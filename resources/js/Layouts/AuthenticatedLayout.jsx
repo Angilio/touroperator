@@ -2,88 +2,83 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import SidebarMenu from '../Pages/Admin/SidebarMenu';
 import { Link, usePage } from '@inertiajs/react';
 import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
-    const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+    const [showSidebarMobile, setShowSidebarMobile] = useState(false);
 
     return (
-        <div className="min-h-screen bg-blue-50">
+        <div className="min-h-screen bg-blue-50 flex flex-col">
             {/* NAVIGATION */}
             <nav className="border-b border-blue-300 bg-blue-100">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between items-center">
-                        <div className="flex">
-                            {/* Logo */}
-                            <div className="flex shrink-0 items-center">
-                                <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-blue-700" />
-                                </Link>
-                            </div>
+                        {/* Logo + Desktop Nav */}
+                        <div className="flex items-center">
+                            <Link href="/" className="flex shrink-0 items-center">
+                                <ApplicationLogo className="block h-9 w-auto fill-current text-blue-700" />
+                            </Link>
 
-                            {/* Desktop Nav */}
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            {/* Desktop Nav (visible lg+) */}
+                            <div className="hidden lg:ml-10 lg:flex space-x-8">
                                 <NavLink
-                                    href={route('dashboard.admins')}
-                                    active={route().current('dashboard.admins')}
+                                    href={route('statistique.index')}
+                                    active={route().current('statistique.index')}
                                     className="text-blue-700 hover:text-blue-900"
                                 >
-                                    Tableau de board
+                                    Tableau de bord
                                 </NavLink>
                             </div>
                         </div>
 
-                        {/* Desktop Dropdown */}
-                        <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                            <div className="relative">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <button className="inline-flex items-center rounded-md border border-transparent bg-blue-200 px-3 py-2 text-sm font-medium text-blue-800 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                            {user.name}
-                                            <svg
-                                                className="ml-2 h-4 w-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </Dropdown.Trigger>
+                        {/* Desktop User Dropdown */}
+                        <div className="hidden lg:ml-6 lg:flex lg:items-center">
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <button className="inline-flex items-center rounded-md border border-transparent bg-blue-200 px-3 py-2 text-sm font-medium text-blue-800 hover:bg-blue-300">
+                                        {user.name}
+                                        <svg
+                                            className="ml-2 h-4 w-4"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clipRule="evenodd"
+                                            />
+                                        </svg>
+                                    </button>
+                                </Dropdown.Trigger>
 
-                                    <Dropdown.Content className="bg-blue-100 border border-blue-300">
-                                        <Dropdown.Link
-                                            href={route('profile.edit')}
-                                            className="text-blue-700 hover:text-blue-900"
-                                        >
-                                            Profile
-                                        </Dropdown.Link>
-                                        <Dropdown.Link
-                                            href={route('logout')}
-                                            method="post"
-                                            as="button"
-                                            className="text-blue-700 hover:text-blue-900"
-                                        >
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
+                                <Dropdown.Content className="bg-blue-100 border border-blue-300">
+                                    <Dropdown.Link
+                                        href={route('profile.edit')}
+                                        className="text-blue-700 hover:text-blue-900"
+                                    >
+                                        Profile
+                                    </Dropdown.Link>
+                                    <Dropdown.Link
+                                        href={route('logout')}
+                                        method="post"
+                                        as="button"
+                                        className="text-blue-700 hover:text-blue-900"
+                                    >
+                                        Log Out
+                                    </Dropdown.Link>
+                                </Dropdown.Content>
+                            </Dropdown>
                         </div>
 
-                        {/* Mobile menu button */}
-                        <div className="flex items-center sm:hidden">
+                        {/* Hamburger visible md+sm (tablette et mobile) */}
+                        <div className="flex lg:hidden">
                             <button
-                                onClick={() =>
-                                    setShowingNavigationDropdown(prev => !prev)
-                                }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-blue-700 hover:bg-blue-200 focus:bg-blue-200 focus:outline-none"
+                                onClick={() => setShowSidebarMobile(true)}
+                                className="inline-flex items-center justify-center rounded-md p-2 text-blue-700 hover:bg-blue-200 focus:outline-none"
                             >
                                 <svg
                                     className="h-6 w-6"
@@ -92,73 +87,64 @@ export default function AuthenticatedLayout({ header, children }) {
                                     viewBox="0 0 24 24"
                                 >
                                     <path
-                                        className={!showingNavigationDropdown ? 'inline-flex' : 'hidden'}
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
                                         strokeWidth="2"
                                         d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={showingNavigationDropdown ? 'inline-flex' : 'hidden'}
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
                                     />
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </div>
-
-                {/* Mobile menu */}
-                <div className={`${showingNavigationDropdown ? 'block' : 'hidden'} sm:hidden`}>
-                    <div className="space-y-1 pb-3 pt-2">
-                        <ResponsiveNavLink
-                            href={route('dashboard.admins')}
-                            active={route().current('dashboard.admins')}
-                            className="text-blue-700 hover:text-blue-900"
-                        >
-                            Tableau de board
-                        </ResponsiveNavLink>
-                    </div>
-
-                    <div className="border-t border-blue-300 pb-1 pt-4">
-                        <div className="px-4">
-                            <div className="text-base font-medium text-blue-700">{user.name}</div>
-                            <div className="text-sm font-medium text-blue-500">{user.email}</div>
-                        </div>
-
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink
-                                href={route('profile.edit')}
-                                className="text-blue-700 hover:text-blue-900"
-                            >
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                method="post"
-                                href={route('logout')}
-                                as="button"
-                                className="text-blue-700 hover:text-blue-900"
-                            >
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
-                    </div>
-                </div>
             </nav>
 
-            {/* HEADER */}
-            {header && (
-                <header className="bg-blue-100 shadow">
-                    <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        {header}
+            {/* MAIN CONTENT */}
+            <div className="py-12">
+                <div className="mx-auto max-w-7xl px-4 flex flex-col lg:flex-row gap-6 relative">
+                    {/* Sidebar Desktop (lg+) */}
+                    <div className="hidden lg:block lg:w-64">
+                        <SidebarMenu />
                     </div>
-                </header>
-            )}
 
-            <main>{children}</main>
+                    {/* Page content */}
+                    <main className="flex-1 bg-white rounded-lg shadow p-6">
+                        {children}
+                    </main>
+
+                    {/* Sidebar Mobile Off-Canvas */}
+                    <div
+                        className={`fixed top-0 right-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 z-50 ${
+                            showSidebarMobile ? 'translate-x-0' : 'translate-x-full'
+                        }`}
+                    >
+                        <div className="flex justify-between items-center px-4 py-4 border-b border-blue-300">
+                            <h3 className="text-lg font-semibold text-blue-800">Menu</h3>
+                            <button
+                                onClick={() => setShowSidebarMobile(false)}
+                                className="text-blue-700 hover:text-blue-900"
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        <div className="px-4 py-6 space-y-4">
+                            <SidebarMenu
+                                mobile
+                                onLinkClick={() => setShowSidebarMobile(false)}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Overlay */}
+                    {showSidebarMobile && (
+                        <div
+                            className="fixed inset-0 bg-black bg-opacity-30 z-40"
+                            onClick={() => setShowSidebarMobile(false)}
+                        ></div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

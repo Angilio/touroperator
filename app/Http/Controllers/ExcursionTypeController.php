@@ -10,6 +10,14 @@ use App\Http\Requests\UpdateExcursionTypeRequest;
 
 class ExcursionTypeController extends Controller
 {
+    public function index()
+    {
+        $types = Type_excursion::all();
+        return inertia('Admin/ExcursionType/ExcursionType', [
+            'types' => $types,
+        ]);
+    }
+
     public function store(StoreExcursionTypeRequest $request)
     {
         Type_excursion::create([

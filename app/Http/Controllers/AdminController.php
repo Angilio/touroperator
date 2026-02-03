@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Type_excursion;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\URL;
@@ -28,11 +27,9 @@ class AdminController extends Controller
                 'nation'
             )
             ->get();
-        $types = Type_excursion::all();
 
-        return Inertia::render('Admin/Dashboard', [
+        return Inertia::render('Admin/Admin/Admin', [
             'admins' => $admins,
-            'types' => $types,
         ]);
     }
 
