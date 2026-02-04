@@ -29,8 +29,10 @@ export default function ExcursionCard({ excursion }) {
     return (
         <>
             <div className="flex h-full flex-col overflow-hidden rounded-xl bg-white shadow transition hover:shadow-lg">
-                {/* Diaporama */}
-                <div className="relative w-full bg-gray-100 h-40 sm:h-44 md:h-48 lg:h-52">
+                
+                {/* 🖼️ Zone image / placeholder */}
+                <div className="relative flex w-full items-center justify-center
+                                bg-gray-100 h-40 sm:h-44 md:h-48 lg:h-52">
                     {images.length > 0 ? (
                         <img
                             src={`/storage/${images[index].image_path}`}
@@ -38,39 +40,48 @@ export default function ExcursionCard({ excursion }) {
                             className="h-full w-full object-cover"
                         />
                     ) : (
-                        <div className="flex h-full items-center justify-center text-sm text-gray-400">
-                            Aucune image
+                        <div className="flex h-full w-full flex-col items-center justify-center
+                                        bg-gradient-to-br from-gray-100 to-gray-200
+                                        text-center text-sm text-gray-500">
+                            <span className="text-lg">📷</span>
+                            <span>Aucune image</span>
                         </div>
                     )}
                 </div>
 
-                {/* Contenu */}
-                <div className="flex flex-1 flex-col p-3 sm:p-4">
-                    <h3 className="text-base font-semibold text-gray-800 sm:text-lg">
+                {/* 📄 Contenu */}
+                <div className="flex flex-1 flex-col p-3 sm:p-4 min-w-0 bg-gradient-to-br from-blue-500 to-blue-700 text-white">
+                    <h3 className="truncate text-base font-semibold text-white sm:text-lg">
                         {excursion.title}
                     </h3>
 
-                    <p className="mt-1 line-clamp-2 text-xs text-gray-600 sm:text-sm">
+                    <p className="mt-1 line-clamp-2 text-xs text-blue-100 sm:text-sm">
                         {excursion.short_description}
                     </p>
 
-                    <div className="mt-auto flex flex-col gap-2 pt-3 sm:flex-row sm:items-center sm:justify-between">
-                        <span className="text-base font-bold text-blue-700 sm:text-lg">
-                            {excursion.price} Ar
+                    {/* 💰 + Actions */}
+                    <div className="mt-auto pt-3">
+                        <span className="block text-base font-bold text-white sm:text-lg">
+                            {Number(excursion.price).toLocaleString('fr-FR')} €
                         </span>
 
-                        <div className="flex gap-2">
-                            <Link
+                        {/* 🔘 Boutons */}
+                        <div className="mt-2 flex w-full flex-wrap gap-2">
+                           <Link
                                 href={route('excursions.show', excursion.id)}
-                                className="flex flex-1 items-center justify-center gap-1 rounded-md border px-2 py-1 text-xs text-gray-700 hover:bg-gray-100 sm:flex-none sm:px-3 sm:text-sm"
+                                className="flex flex-1 min-w-[90px] items-center justify-center gap-1
+                                        rounded-md bg-white/90 px-2 py-1 text-xs text-blue-700
+                                        hover:bg-white sm:text-sm"
                             >
                                 <Eye size={14} />
                                 Voir
                             </Link>
 
-                            <Link
+                           <Link
                                 href={route('excursions.edit', excursion.id)}
-                                className="flex flex-1 items-center justify-center gap-1 rounded-md bg-blue-600 px-2 py-1 text-xs text-white hover:bg-blue-700 sm:flex-none sm:px-3 sm:text-sm"
+                                className="flex flex-1 min-w-[90px] items-center justify-center gap-1
+                                        rounded-md bg-blue-900 px-2 py-1 text-xs text-white
+                                        hover:bg-blue-800 sm:text-sm"
                             >
                                 <Edit size={14} />
                                 Modifier
@@ -78,7 +89,9 @@ export default function ExcursionCard({ excursion }) {
 
                             <button
                                 onClick={() => setShowDelete(true)}
-                                className="flex flex-1 items-center justify-center gap-1 rounded-md bg-red-600 px-2 py-1 text-xs text-white hover:bg-red-700 sm:flex-none sm:px-3 sm:text-sm"
+                                className="flex flex-1 min-w-[90px] items-center justify-center gap-1
+                                        rounded-md bg-red-500 px-2 py-1 text-xs text-white
+                                        hover:bg-red-600 sm:text-sm"
                             >
                                 <Trash2 size={14} />
                                 Supprimer

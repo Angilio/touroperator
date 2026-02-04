@@ -22,6 +22,9 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
     const fileInputRef = useRef();
     const videoInputRef = useRef();
 
+    const [existingImages, setExistingImages] = useState(excursion?.images || []);
+    const [existingVideo, setExistingVideo] = useState(excursion?.video_url || null);
+
     // Gestion des champs
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -63,8 +66,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         } else if (mode === 'edit' && excursion?.id) {
             router.post(
                 route('excursions.update', excursion.id),
-                data,
-                { method: 'put' }
+                data
             );
         }
     };
@@ -147,6 +149,23 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
                             accept="image/*"
                         />
                     </div>
+
+                    {/* Images existantes */}
+                    {existingImages.length > 0 && (
+                        <div className="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+                            {existingImages.map((img) => (
+                                <div
+                                    key={img.id}
+                                    className="w-full rounded-lg border overflow-hidden"
+                                >
+                                    <img
+                                        src={img.url}
+                                        className="w-full h-24 object-cover"
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Prévisualisation */}
                     {imagePreviews.length > 0 && (
@@ -262,6 +281,15 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
                             accept="video/*"
                         />
                     </div>
+
+                    {/* Vidéo existante */}
+                    {existingVideo && !formData.video && (
+                        <video
+                            src={existingVideo}
+                            controls
+                            className="mt-4 w-full max-w-md rounded-lg border"
+                        />
+                    )}
 
                     {/* Prévisualisation */}
                     {formData.video && (

@@ -9,6 +9,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/excursions', [ExcursionController::class, 'store'])->name('excursions.store');
     Route::get('/excursions/{excursion}', [ExcursionController::class, 'show'])->name('excursions.show');
     Route::get('/excursions/{excursion}/edit', [ExcursionController::class, 'edit'])->name('excursions.edit');
-    Route::put('/excursions/{excursion}', [ExcursionController::class, 'update'])->name('excursions.update');
+    Route::post('/excursions/{excursion}', [ExcursionController::class, 'update'])->name('excursions.update');
     Route::delete('/excursions/{excursion}', [ExcursionController::class, 'destroy'])->name('excursions.destroy');
 });

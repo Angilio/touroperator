@@ -61,6 +61,32 @@ class ExcursionController extends Controller
             ->with('success', 'Excursion ajoutée avec succès');
     }
 
+    public function edit(Excursion $excursion)
+    {
+        $excursion->load('gallery');
+        $types = Type_excursion::all();
+
+        return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
+            'excursion' => [
+                'id' => $excursion->id,
+                'title' => $excursion->title,
+                'short_description' => $excursion->short_description,
+                'description' => $excursion->description,
+                'price' => $excursion->price,
+                'type_excursion_id' => $excursion->type_excursion_id,
+                'video_url' => $excursion->video
+                    ? asset('storage/' . $excursion->video)
+                    : null,
+                'images' => $excursion->gallery->map(fn ($img) => [
+                    'id' => $img->id,
+                    'url' => asset('storage/' . $img->image_path),
+                ]),
+            ],
+            'types' => $types,
+            'mode' => 'edit',
+        ]);
+    }
+
     /**
      * Mettre à jour une excursion
      */
