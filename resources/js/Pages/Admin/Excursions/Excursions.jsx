@@ -1,4 +1,5 @@
 import { Head, Link, usePage } from '@inertiajs/react';
+import FlashMessage from '@/Components/FlashMessage';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import ExcursionCard from './Partials/ExcursionCard';
 import { Plus, MapPin } from 'lucide-react';
@@ -15,6 +16,8 @@ export default function Excursions() {
             }
         >
             <Head title="Excursions" />
+
+            <FlashMessage />
 
             <div className="text-blue-800">
                 {/* Header interne (comme Types d’excursions) */}

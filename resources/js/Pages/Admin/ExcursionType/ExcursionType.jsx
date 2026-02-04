@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Plus, Tag, Edit2, Trash2 } from 'lucide-react';
-import { router, usePage, Head } from '@inertiajs/react';
+import { router, Head } from '@inertiajs/react';
+import FlashMessage from '@/Components/FlashMessage';
 import CreateExcursionTypeModal from './CreateExcursionTypeModal';
 import ConfirmDeleteModal from '@/Components/ConfirmDeleteModal';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
 export default function ExcursionType({ types = [] }) {
-    const { flash } = usePage().props;
     const [showModal, setShowModal] = useState(false);
     const [editingType, setEditingType] = useState(null);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -57,17 +57,7 @@ export default function ExcursionType({ types = [] }) {
                     </button>
                 </div>
 
-                {flash?.success && (
-                    <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
-                        {flash.success}
-                    </div>
-                )}
-
-                {flash?.error && (
-                    <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                        {flash.error}
-                    </div>
-                )}
+                <FlashMessage />
 
                 {/* Liste */}
                 {types.length > 0 ? (

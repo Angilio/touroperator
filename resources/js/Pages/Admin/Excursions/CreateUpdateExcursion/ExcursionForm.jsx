@@ -14,7 +14,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         price: excursion?.price || '',
         video: null,
         type_excursion_id: excursion?.type_excursion_id || '',
-        images: [], // fichiers upload
+        images: [],
     });
 
     const [imagePreviews, setImagePreviews] = useState([]);
@@ -43,25 +43,29 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         e.preventDefault();
 
         const data = new FormData();
+
         data.append('title', formData.title);
         data.append('short_description', formData.short_description);
         data.append('description', formData.description);
         data.append('price', formData.price);
-        data.append('video', formData.video);
         data.append('type_excursion_id', formData.type_excursion_id);
-
-        formData.images.forEach((file, index) => {
-            data.append(`images[${index}]`, file);
-        });
 
         if (formData.video) {
             data.append('video', formData.video);
         }
 
+        formData.images.forEach((file, index) => {
+            data.append(`images[${index}]`, file);
+        });
+
         if (mode === 'create') {
-            Inertia.post('/excursions', data);
+            router.post(route('excursions.store'), data);
         } else if (mode === 'edit' && excursion?.id) {
-            Inertia.post(`/excursions/${excursion.id}`, data, { _method: 'PUT' });
+            router.post(
+                route('excursions.update', excursion.id),
+                data,
+                { method: 'put' }
+            );
         }
     };
 
