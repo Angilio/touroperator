@@ -1,7 +1,8 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head } from '@inertiajs/react';
+import ExcursionPublicCard from './ExcursionPublicCard';
 
-export default function Welcome() {
+export default function Welcome({ excursions }) {
   return (
     <GuestLayout>
       <Head title="Accueil" />
@@ -20,19 +21,14 @@ export default function Welcome() {
       </div>
 
       {/* Cards Section */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-6 p-6 max-w-4xl mx-auto">
-        {["Site1", "Site2", "Site3", "Site4"].map((item, index) => (
-          <div
-            key={index}
-            className="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center hover:shadow-xl transition"
-          >
-            <div className="w-24 h-24 bg-blue-300 rounded-xl mb-4 flex items-center justify-center text-white font-bold">
-              IMG
-            </div>
-            <p className="text-lg font-semibold">{item}</p>
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
+        {excursions.map((excursion) => (
+            <ExcursionPublicCard
+                key={excursion.id}
+                excursion={excursion}
+            />
         ))}
-      </div>
+    </div>
 
     </GuestLayout>
   );

@@ -18,7 +18,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     <div className="flex h-16 justify-between items-center">
                         {/* Logo + Desktop Nav */}
                         <div className="flex items-center">
-                            <Link href="/" className="flex shrink-0 items-center">
+                            <Link href={route('welcome')} className="flex shrink-0 items-center">
                                 <ApplicationLogo className="block h-9 w-auto fill-current text-blue-700" />
                             </Link>
 

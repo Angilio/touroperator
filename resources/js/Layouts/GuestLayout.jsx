@@ -15,7 +15,7 @@ export default function GuestLayout({ children }) {
 
                     <div className="flex items-center justify-between w-full md:w-auto">
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2">
+                        <Link href={route('welcome')} className="flex items-center gap-2">
                             <ApplicationLogo className="h-10 w-10 fill-current text-white" />
                             <span className="text-xl font-bold">
                                 MadaTour
@@ -46,7 +46,7 @@ export default function GuestLayout({ children }) {
 
                     {/* Desktop menu */}
                     <nav className="hidden md:flex gap-6 font-medium">
-                        <Link href="/" className="hover:text-blue-200">Accueil</Link>
+                        <Link href={route('welcome')} className="hover:text-blue-200">Accueil</Link>
                         <Link href="/destinations" className="hover:text-blue-200">Destinations</Link>
                         <Link href="/services" className="hover:text-blue-200">Services</Link>
                         <Link href="/contact" className="hover:text-blue-200">Contact</Link>
@@ -56,7 +56,7 @@ export default function GuestLayout({ children }) {
                 {/* Mobile menu */}
                 {open && (
                     <div className="md:hidden bg-blue-800 px-6 pb-4 space-y-3">
-                        <Link href="/" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Accueil</Link>
+                        <Link href={route('welcome')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Accueil</Link>
                         <Link href="/destinations" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Destinations</Link>
                         <Link href="/services" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Services</Link>
                         <Link href="/contact" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Contact</Link>

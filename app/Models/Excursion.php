@@ -25,7 +25,7 @@ class Excursion extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'reservation_id');
+        return $this->hasMany(Reservation::class, 'excursion_id');
     }
 
     public function gallery()

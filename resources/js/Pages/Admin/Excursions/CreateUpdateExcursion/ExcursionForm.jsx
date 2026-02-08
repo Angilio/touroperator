@@ -64,6 +64,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         if (mode === 'create') {
             router.post(route('excursions.store'), data);
         } else if (mode === 'edit' && excursion?.id) {
+            data.append('_method', 'PUT');
             router.post(
                 route('excursions.update', excursion.id),
                 data
