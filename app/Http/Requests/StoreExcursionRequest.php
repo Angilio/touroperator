@@ -30,7 +30,7 @@ class StoreExcursionRequest extends FormRequest
 
             'video' => 'nullable|file|mimetypes:video/mp4,video/quicktime,video/x-msvideo|max:51200',
 
-            'images' => 'required|array',
+            'images' => 'nullable|array',
             'images.*' => 'required|image|mimes:jpg,jpeg,png,webp|max:4096',
         ];
     }

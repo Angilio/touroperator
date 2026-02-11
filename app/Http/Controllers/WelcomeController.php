@@ -16,4 +16,13 @@ class WelcomeController extends Controller
             'excursions' => $excursions
         ]);
     }
+
+    public function showClient(Excursion $excursion)
+    {
+        $excursion->load('gallery', 'type_excursion');
+
+        return Inertia::render('ShowExcursion', [
+            'excursion' => $excursion,
+        ]);
+    }
 }

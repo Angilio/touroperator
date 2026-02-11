@@ -62,7 +62,9 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         });
 
         if (mode === 'create') {
-            router.post(route('excursions.store'), data);
+            router.post(route('excursions.store'), data, {
+                forceFormData: true,
+            });
         } else if (mode === 'edit' && excursion?.id) {
             data.append('_method', 'PUT');
             router.post(

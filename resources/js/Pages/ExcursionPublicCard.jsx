@@ -19,7 +19,7 @@ export default function ExcursionPublicCard({ excursion }) {
         <div className="flex flex-col overflow-hidden rounded-xl p-2 bg-white shadow hover:shadow-lg transition">
 
             {/* Image */}
-            <div className="h-44 bg-gray-100">
+            <div className="h-64 bg-gray-100">
                 {images.length > 0 ? (
                     <img
                         src={`/storage/${images[index].image_path}`}
@@ -49,7 +49,7 @@ export default function ExcursionPublicCard({ excursion }) {
 
                     <div className="flex gap-2 mt-2">
                         <Link
-                            href={route('excursions.show', excursion.id)}
+                            href={route('excursions.showClient', excursion.id)}
                             className="flex-1 text-center bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
                         >
                             Voir
