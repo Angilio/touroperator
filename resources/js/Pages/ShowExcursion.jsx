@@ -20,31 +20,41 @@ export default function ShowExcursion({ excursion }) {
     return (
         <GuestLayout>
             <Head title={excursion.title} />
-            <div className="max-w-6xl mx-auto px-4 py-8">
+            
+            {/* INFOS PRINCIPALES */}
+            <div className="max-w-6xl mx-auto px-4 pt-6">
+                <div className="flex flex-col lg:flex-row lg:items-center gap-4">
 
-                {/* INFOS PRINCIPALES */}
-                <div className="bg-white rounded-xl shadow p-6 mb-8">
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2">
-                        <div className="flex-1">
-                            <h1 className="text-2xl md:text-3xl font-bold text-blue-800">
-                                Excursion {excursion.title} - {Number(excursion.price).toLocaleString('fr-FR')} €
-                            </h1>
-                        </div>
-
-                        <div className="lg:text-right">
-                            <p className="text-2xl md:text-2xl lg:text-3xl font-bold text-blue-600">
-                                {excursion.type_excursion?.type}
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* DESCRIPTION COURTE */}
-                    <p className="mt-4 text-gray-600">
-                        {excursion.short_description}
-                    </p>
-
+                <div className="lg:w-1/3">
+                    <button
+                        onClick={() => window.history.back()}
+                        className="flex items-center gap-2 text-blue-700 font-semibold hover:text-blue-900"
+                    >
+                        ← Retour
+                    </button>
                 </div>
 
+                <div className="lg:w-1/3 text-center">
+                    <h1 className="text-2xl md:text-3xl font-bold text-blue-800">
+                        Excursion {excursion.title} - {Number(excursion.price).toLocaleString('fr-FR')} €
+                    </h1>
+                </div>
+
+                <div className="lg:w-1/3 lg:text-right">
+                    <p className="text-2xl md:text-2xl lg:text-3xl font-bold text-blue-600">
+                        {excursion.type_excursion?.type}
+                    </p>
+                </div>
+            </div>
+
+                {/* DESCRIPTION COURTE */}
+                <p className="mt-4 text-gray-600">
+                    {excursion.short_description}
+                </p>
+
+            </div>
+
+            <div className="max-w-6xl mx-auto px-4 py-8">
                 {/* GALERIE */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
                     {excursion.gallery?.map((img, index) => (
@@ -69,16 +79,10 @@ export default function ShowExcursion({ excursion }) {
                 )}
 
                 {/* DESCRIPTION COMPLETE */}
-                <div className="bg-white rounded-xl shadow p-6">
-                    <h2 className="text-xl font-semibold mb-3">
-                        Description
-                    </h2>
-
-                    <p className="text-gray-700 leading-relaxed">
-                        {excursion.description}
-                    </p>
-                </div>
-
+                <div
+                    className="prose max-w-none text-gray-700"
+                    dangerouslySetInnerHTML={{ __html: excursion.description }}
+                />
             </div>
             {selectedIndex !== null && (
                 <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
