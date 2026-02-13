@@ -17,6 +17,16 @@ class WelcomeController extends Controller
         ]);
     }
 
+    public function apropos()
+    {
+        return inertia::render('Apropos');
+    }
+
+    public function contact()
+    {
+        return inertia::render('Contact');
+    }
+
     public function showClient(Excursion $excursion)
     {
         $excursion->load('gallery', 'type_excursion');

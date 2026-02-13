@@ -47,9 +47,8 @@ export default function GuestLayout({ children }) {
                     {/* Desktop menu */}
                     <nav className="hidden md:flex gap-6 font-medium">
                         <Link href={route('welcome')} className="hover:text-blue-200">Accueil</Link>
-                        <Link href="/destinations" className="hover:text-blue-200">Destinations</Link>
-                        <Link href="/services" className="hover:text-blue-200">Services</Link>
-                        <Link href="/contact" className="hover:text-blue-200">Contact</Link>
+                        <Link href={route('apropos')} className="hover:text-blue-200">À Propos</Link>
+                        <Link href={route('contact')} className="hover:text-blue-200">Contact</Link>
                     </nav>
                 </div>
 
@@ -57,9 +56,8 @@ export default function GuestLayout({ children }) {
                 {open && (
                     <div className="md:hidden bg-blue-800 px-6 pb-4 space-y-3">
                         <Link href={route('welcome')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Accueil</Link>
-                        <Link href="/destinations" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Destinations</Link>
-                        <Link href="/services" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Services</Link>
-                        <Link href="/contact" className="block hover:text-blue-200" onClick={() => setOpen(false)}>Contact</Link>
+                        <Link href={route('apropos')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>À Propos</Link>
+                        <Link href={route('contact')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Contact</Link>
                     </div>
                 )}
             </header>

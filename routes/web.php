@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'welcome'])->name('welcome');
+Route::get('/Apropos', [WelcomeController::class, 'apropos'])->name('apropos');
+Route::get('/Contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::get('/excursion-client/{excursion}', [WelcomeController::class, 'showClient'])->name('excursions.showClient');
 
 require __DIR__.'/auth.php';
