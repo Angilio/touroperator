@@ -17,3 +17,4 @@ require __DIR__.'/admins.php';
 require __DIR__.'/statistique.php';
 require __DIR__.'/profile.php';
 require __DIR__.'/reservations.php';
+require __DIR__.'/typeVoyage.php';

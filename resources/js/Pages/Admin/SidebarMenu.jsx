@@ -1,5 +1,12 @@
 import { Link } from '@inertiajs/react';
-import { BarChart2, User, Truck, Tag } from 'lucide-react';
+import {
+    BarChart2,
+    User,
+    Truck,
+    Tag,
+    Plane,
+    CalendarCheck
+} from 'lucide-react';
 import { route } from 'ziggy-js';
 
 export default function SidebarMenu() {
@@ -8,6 +15,8 @@ export default function SidebarMenu() {
         { name: 'Admin', route: 'admins.index', icon: User },
         { name: "Type d'excursion", route: 'excursion-types.index', icon: Tag },
         { name: 'Excursions', route: 'excursions.index', icon: Truck },
+        { name: 'Type de voyage', route: 'type-voyages.index', icon: Plane },
+        { name: 'Réservations', route: 'reservations.index', icon: CalendarCheck },
     ];
 
     return (

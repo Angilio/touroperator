@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Excursion;
 use App\Models\Type_voyage;
+use App\Models\Reservation;
 use Inertia\Inertia;
 
 class ReservationController extends Controller
 {
+    //public
     public function create(Excursion $excursion)
     {
         return Inertia::render('Reservations', [
@@ -17,6 +19,7 @@ class ReservationController extends Controller
         ]);
     }
 
+    //public
     public function store(Request $request)
     {
         $request->validate([
@@ -31,5 +34,14 @@ class ReservationController extends Controller
         Reservation::create($request->all());
 
         return redirect()->back()->with('success', 'Réservation enregistrée');
+    }
+
+    //admin
+    public function index()
+    {
+        $reservations = Reservation::with(['type_voyage', 'excursion'])->get();
+        return Inertia::render('Admin/Reservations/Reservations', [
+            'reservations' => $reservations
+        ]);
     }
 }
