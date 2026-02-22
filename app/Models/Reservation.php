@@ -8,6 +8,7 @@ class Reservation extends Model
 {
       protected $fillable = [
         'nbrPersonne',
+        'fullname',
         'dateStart',
         'dateEnd',
         'excursion_id',

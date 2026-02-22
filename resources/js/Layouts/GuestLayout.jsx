@@ -7,22 +7,17 @@ export default function GuestLayout({ children }) {
     const [search, setSearch] = useState('');
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
-
+        <div className="min-h-screen flex flex-col bg-gray-100">
             {/* HEADER FIXE */}
             <header className="w-full fixed top-0 z-50 bg-blue-900 text-white shadow-md">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
                     <div className="flex items-center justify-between w-full md:w-auto">
-                        {/* Logo */}
                         <Link href={route('welcome')} className="flex items-center gap-2">
                             <ApplicationLogo className="h-10 w-10 fill-current text-white" />
-                            <span className="text-xl font-bold">
-                                MadaTour
-                            </span>
+                            <span className="text-xl font-bold">MadaTour</span>
                         </Link>
 
-                        {/* Mobile button */}
                         <button
                             onClick={() => setOpen(!open)}
                             className="md:hidden focus:outline-none"
@@ -33,7 +28,6 @@ export default function GuestLayout({ children }) {
                         </button>
                     </div>
 
-                    {/* Barre de recherche */}
                     <div className="flex-1 md:mx-6">
                         <input
                             type="text"
@@ -44,7 +38,6 @@ export default function GuestLayout({ children }) {
                         />
                     </div>
 
-                    {/* Desktop menu */}
                     <nav className="hidden md:flex gap-6 font-medium">
                         <Link href={route('welcome')} className="hover:text-blue-200">Accueil</Link>
                         <Link href={route('apropos')} className="hover:text-blue-200">À Propos</Link>
@@ -52,7 +45,6 @@ export default function GuestLayout({ children }) {
                     </nav>
                 </div>
 
-                {/* Mobile menu */}
                 {open && (
                     <div className="md:hidden bg-blue-800 px-6 pb-4 space-y-3">
                         <Link href={route('welcome')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Accueil</Link>
@@ -63,10 +55,9 @@ export default function GuestLayout({ children }) {
             </header>
 
             {/* CONTENU */}
-            <main className="flex-1 pt-28">
+            <main className="flex-1">
                 {children}
             </main>
-
         </div>
     );
 }

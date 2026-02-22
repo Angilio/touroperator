@@ -1,52 +1,45 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Reservations({ reservations }) {
+export default function Reservations({ reservations = [] }) {
     return (
         <AuthenticatedLayout>
             <Head title="Réservations" />
 
-            <h1 className="text-2xl font-bold mb-6 text-blue-800">
+            {/* TITRE */}
+            <h1 className="text-2xl md:text-3xl font-bold mb-8 text-blue-800 text-center">
                 Liste des réservations
             </h1>
 
-            <table className="w-full border rounded-lg overflow-hidden">
-                <thead className="bg-blue-100">
-                    <tr>
-                        <th className="p-3 text-left">Excursion</th>
-                        <th className="p-3 text-left">Personnes</th>
-                        <th className="p-3 text-left">Dates</th>
-                        <th className="p-3 text-left">Contact</th>
-                        <th className="p-3 text-left">Email</th>
-                    </tr>
-                </thead>
-
-                <tbody>
+            {reservations.length === 0 ? (
+                <div className="text-center py-10 text-gray-500 bg-white/60 rounded-xl shadow">
+                    Aucune réservation
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {reservations.map(res => (
-                        <tr key={res.id} className="border-t">
-                            <td className="p-3">
-                                {res.excursion?.title}
-                            </td>
+                        <div
+                            key={res.id}
+                            className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition"
+                        >
+                            {/* Titre excursion */}
+                            <h2 className="text-xl font-bold text-blue-700 mb-3">
+                                {res.excursion?.title || 'Excursion'}
+                            </h2>
 
-                            <td className="p-3">
-                                {res.nbrPersonne}
-                            </td>
-
-                            <td className="p-3">
-                                {res.dateStart} → {res.dateEnd}
-                            </td>
-
-                            <td className="p-3">
-                                {res.contact}
-                            </td>
-
-                            <td className="p-3">
-                                {res.email}
-                            </td>
-                        </tr>
+                            {/* Infos */}
+                            <div className="space-y-2 text-gray-700">
+                                <p><strong>Type voyage :</strong> {res.type_voyage?.typevoyage || '-'}</p>
+                                <p><strong>Nom client :</strong> {res.fullname || '-'}</p>
+                                <p><strong>Personnes :</strong> {res.nbrPersonne}</p>
+                                <p><strong>Dates :</strong> {res.dateStart} → {res.dateEnd}</p>
+                                <p><strong>Contact :</strong> {res.contact}</p>
+                                <p><strong>Email :</strong> {res.email}</p>
+                            </div>
+                        </div>
                     ))}
-                </tbody>
-            </table>
+                </div>
+            )}
         </AuthenticatedLayout>
     );
 }

@@ -27,7 +27,9 @@ export default function Login({ status, canResetPassword }) {
 
             <div className="mx-auto w-full max-w-md px-4 sm:px-0">
                 {/* Title */}
-                <h1 className="mb-6 text-center text-2xl font-bold text-blue-700">
+                <h1 className="m-4 text-gray-700 italic text-center 
+                            bg-white/50 backdrop-blur-sm px-4 py-2 rounded-lg 
+                            max-w-3xl mx-auto font-bold">
                     Connexion
                 </h1>
 

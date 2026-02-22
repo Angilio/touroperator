@@ -16,14 +16,14 @@ export default function ExcursionPublicCard({ excursion }) {
     }, [images.length]);
 
     return (
-        <div className="flex flex-col overflow-hidden rounded-xl p-2 bg-white shadow hover:shadow-lg transition">
+        <div className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300">
 
             {/* Image */}
-            <div className="h-64 bg-gray-100">
+            <div className="relative h-64 overflow-hidden">
                 {images.length > 0 ? (
                     <img
                         src={`/storage/${images[index].image_path}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                     />
                 ) : (
                     <div className="flex h-full items-center justify-center text-gray-400">
@@ -32,36 +32,27 @@ export default function ExcursionPublicCard({ excursion }) {
                 )}
             </div>
 
-            {/* Contenu */}
-            <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-semibold text-lg truncate">
+            {/* Content */}
+            <div className="p-5 flex flex-col">
+                <h3 className="font-bold text-lg mb-2">
                     {excursion.title}
                 </h3>
 
-                <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+                <p className="text-sm text-gray-600 line-clamp-2">
                     {excursion.short_description}
                 </p>
 
-                <div className="mt-auto pt-3">
-                    <p className="font-bold text-blue-600">
+                <div className="mt-4 flex items-center justify-between">
+                    <span className="text-blue-600 font-bold text-lg">
                         {Number(excursion.price).toLocaleString('fr-FR')} €
-                    </p>
+                    </span>
 
-                    <div className="flex gap-2 mt-2">
-                        <Link
-                            href={route('excursions.showClient', excursion.id)}
-                            className="flex-1 text-center bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600"
-                        >
-                            Voir
-                        </Link>
-
-                        <Link
-                            href={route('reservations.create', excursion.id)}
-                            className="flex-1 text-center bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-                        >
-                            Réserver
-                        </Link>
-                    </div>
+                    <Link
+                        href={route('excursions.showClient', excursion.id)}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition"
+                    >
+                        Voir détails
+                    </Link>
                 </div>
             </div>
         </div>

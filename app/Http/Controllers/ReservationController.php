@@ -10,6 +10,15 @@ use Inertia\Inertia;
 
 class ReservationController extends Controller
 {
+    //admin
+    public function index()
+    {
+        $reservations = Reservation::with(['excursion', 'type_voyage'])->latest()->get();
+        return Inertia::render('Admin/Reservations/Reservations', [
+            'reservations' => $reservations
+        ]);
+    }
+
     //public
     public function create(Excursion $excursion)
     {
@@ -22,26 +31,19 @@ class ReservationController extends Controller
     //public
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nbrPersonne' => 'required|integer|min:1',
+            'fullname' => 'required|string|max:255',
             'dateStart' => 'required|date',
-            'dateEnd' => 'required|date',
-            'type_voyage_id' => 'required',
-            'contact' => 'required',
-            'email' => 'required|email',
+            'dateEnd' => 'required|date|after_or_equal:dateStart',
+            'excursion_id' => 'required|exists:excursions,id',
+            'type_voyage_id' => 'nullable|exists:type_voyages,id',
+            'contact' => 'required|string|max:50',
+            'email' => 'required|email|max:100',
         ]);
 
-        Reservation::create($request->all());
+        Reservation::create($validated);
 
-        return redirect()->back()->with('success', 'Réservation enregistrée');
-    }
-
-    //admin
-    public function index()
-    {
-        $reservations = Reservation::with(['type_voyage', 'excursion'])->get();
-        return Inertia::render('Admin/Reservations/Reservations', [
-            'reservations' => $reservations
-        ]);
+        return redirect()->route('welcome')->with('success', 'Réservation enregistrée');
     }
 }

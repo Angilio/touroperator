@@ -6,6 +6,7 @@ import TextInput from '@/Components/TextInput';
 
 export default function Reservations({ excursion, types }) {
     const { data, setData, post, processing, errors } = useForm({
+        fullname: '',
         nbrPersonne: '',
         dateStart: '',
         dateEnd: '',
@@ -37,6 +38,30 @@ export default function Reservations({ excursion, types }) {
                 </h1>
 
                 <form onSubmit={submit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    {/* Nom complet client */}
+                    <div>
+                        <InputLabel value="Nom complet" />
+                        <TextInput
+                            type="text"
+                            value={data.fullname}
+                            onChange={e => setData('fullname', e.target.value)}
+                            className="mt-1 block w-full"
+                        />
+                        <InputError message={errors.fullname} />
+                    </div>
+
+                     {/* Email */}
+                    <div>
+                        <InputLabel value="Email" />
+                        <TextInput
+                            type="email"
+                            value={data.email}
+                            onChange={e => setData('email', e.target.value)}
+                            className="mt-1 block w-full"
+                        />
+                        <InputError message={errors.email} />
+                    </div>
 
                     {/* Nombre personnes */}
                     <div>
@@ -93,7 +118,7 @@ export default function Reservations({ excursion, types }) {
                     </div>
 
                     {/* Contact */}
-                    <div>
+                    <div className="md:col-span-2">
                         <InputLabel value="Contact" />
                         <TextInput
                             type="text"
@@ -104,19 +129,7 @@ export default function Reservations({ excursion, types }) {
                         <InputError message={errors.contact} />
                     </div>
 
-                    {/* Email */}
-                    <div>
-                        <InputLabel value="Email" />
-                        <TextInput
-                            type="email"
-                            value={data.email}
-                            onChange={e => setData('email', e.target.value)}
-                            className="mt-1 block w-full"
-                        />
-                        <InputError message={errors.email} />
-                    </div>
-
-                    {/* Bouton (pleine largeur, centré sur 2 colonnes) */}
+                    {/* Bouton */}
                     <div className="md:col-span-2">
                         <button
                             disabled={processing}
