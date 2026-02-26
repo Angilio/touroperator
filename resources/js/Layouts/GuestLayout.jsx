@@ -1,63 +1,111 @@
-import { useState } from 'react';
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import { Link } from '@inertiajs/react';
+import { useState } from "react";
+import ApplicationLogo from "@/Components/ApplicationLogo";
+import { Link } from "@inertiajs/react";
 
 export default function GuestLayout({ children }) {
-    const [open, setOpen] = useState(false);
-    const [search, setSearch] = useState('');
+  const [open, setOpen] = useState(false);
 
-    return (
-        <div className="min-h-screen flex flex-col bg-gray-100">
-            {/* HEADER FIXE */}
-            <header className="w-full fixed top-0 z-50 bg-blue-900 text-white shadow-md">
-                <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      {/* HEADER */}
+      <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-blue-950/90 text-white backdrop-blur">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="flex items-center justify-between">
+            
+            {/* Brand */}
+            <Link href={route("welcome")} className="flex items-center gap-2">
+              <ApplicationLogo className="h-10 w-10 fill-current text-white" />
+              <div className="leading-tight">
+                <p className="text-lg font-extrabold">MadaTour</p>
+                <p className="text-xs text-white/70 hidden sm:block">
+                  Explore Antsiranana
+                </p>
+              </div>
+            </Link>
 
-                    <div className="flex items-center justify-between w-full md:w-auto">
-                        <Link href={route('welcome')} className="flex items-center gap-2">
-                            <ApplicationLogo className="h-10 w-10 fill-current text-white" />
-                            <span className="text-xl font-bold">MadaTour</span>
-                        </Link>
+            {/* Desktop nav */}
+            <nav className="hidden md:flex items-center gap-6 text-sm font-semibold">
+              <Link href={route("welcome")} className="hover:text-blue-200 transition">
+                Home
+              </Link>
+              <Link href={route("apropos")} className="hover:text-blue-200 transition">
+                About
+              </Link>
+              <Link href={route("contact")} className="hover:text-blue-200 transition">
+                Contact
+              </Link>
+              <Link
+                href={route("login")}
+                className="rounded-full bg-white/10 px-4 py-2 hover:bg-white/20 transition"
+              >
+                Login
+              </Link>
+            </nav>
 
-                        <button
-                            onClick={() => setOpen(!open)}
-                            className="md:hidden focus:outline-none"
-                        >
-                            <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
-                    </div>
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden rounded-xl bg-white/10 p-2 hover:bg-white/20 transition"
+              aria-label="Open menu"
+            >
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
 
-                    <div className="flex-1 md:mx-6">
-                        <input
-                            type="text"
-                            placeholder="Rechercher une destination..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            className="w-full rounded-full px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        />
-                    </div>
-
-                    <nav className="hidden md:flex gap-6 font-medium">
-                        <Link href={route('welcome')} className="hover:text-blue-200">Accueil</Link>
-                        <Link href={route('apropos')} className="hover:text-blue-200">À Propos</Link>
-                        <Link href={route('contact')} className="hover:text-blue-200">Contact</Link>
-                    </nav>
-                </div>
-
-                {open && (
-                    <div className="md:hidden bg-blue-800 px-6 pb-4 space-y-3">
-                        <Link href={route('welcome')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Accueil</Link>
-                        <Link href={route('apropos')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>À Propos</Link>
-                        <Link href={route('contact')} className="block hover:text-blue-200" onClick={() => setOpen(false)}>Contact</Link>
-                    </div>
-                )}
-            </header>
-
-            {/* CONTENU */}
-            <main className="flex-1">
-                {children}
-            </main>
+          {/* Mobile menu */}
+          {open && (
+            <div className="md:hidden mt-4">
+              <div className="rounded-2xl bg-white/5 p-3 space-y-2 text-sm font-semibold">
+                <Link
+                  href={route("welcome")}
+                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+                  onClick={() => setOpen(false)}
+                >
+                  Home
+                </Link>
+                <Link
+                  href={route("apropos")}
+                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+                  onClick={() => setOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  href={route("contact")}
+                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+                  onClick={() => setOpen(false)}
+                >
+                  Contact
+                </Link>
+                <Link
+                  href={route("login")}
+                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+                  onClick={() => setOpen(false)}
+                >
+                  Login
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
-    );
+      </header>
+
+      {/* MAIN (padding top pour header fixe) */}
+      <main className="flex-1">
+        {children}
+      </main>
+    </div>
+  );
 }
