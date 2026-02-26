@@ -10,7 +10,7 @@ class WelcomeController extends Controller
 {
     public function welcome()
     {
-        $excursions = Excursion::with('gallery')->latest()->get();
+        $excursions = Excursion::with(['gallery', 'type_excursion'])->latest()->get();
 
         return inertia::render('Welcome', [
             'excursions' => $excursions

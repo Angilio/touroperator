@@ -14,6 +14,15 @@ use Illuminate\Http\RedirectResponse;
 
 class ExcursionController extends Controller
 {
+    public function clientIndex()
+    {
+        $excursions = Excursion::with(['gallery', 'type_excursion'])->get();
+
+        return inertia('ExcursionsIndex', [
+            'excursions' => $excursions
+        ]);
+    }
+
     public function index()
     {
         $excursions = Excursion::with('gallery')->get();

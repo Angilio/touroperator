@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExcursionController;
 
+Route::get('/liste/excursions', [ExcursionController::class, 'clientIndex'])->name('excursions.clientIndex');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/excursions', [ExcursionController::class, 'index'])->name('excursions.index');
     Route::get('/excursions/create', [ExcursionController::class, 'create'])->name('excursions.create');

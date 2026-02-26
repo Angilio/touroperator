@@ -1,9 +1,13 @@
 import { useState } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import { Link } from "@inertiajs/react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function GuestLayout({ children }) {
   const [open, setOpen] = useState(false);
+
+  const whatsappNumber = "261325572786";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20I%20am%20interested%20in%20your%20excursions`;
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
@@ -11,12 +15,11 @@ export default function GuestLayout({ children }) {
       <header className="fixed top-0 z-50 w-full border-b border-white/10 bg-blue-950/90 text-white backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
-            
             {/* Brand */}
             <Link href={route("welcome")} className="flex items-center gap-2">
               <ApplicationLogo className="h-10 w-10 fill-current text-white" />
               <div className="leading-tight">
-                <p className="text-lg font-extrabold">MadaTour</p>
+                <p className="text-lg font-extrabold">OZATour</p>
                 <p className="text-xs text-white/70 hidden sm:block">
                   Explore Antsiranana
                 </p>
@@ -28,18 +31,28 @@ export default function GuestLayout({ children }) {
               <Link href={route("welcome")} className="hover:text-blue-200 transition">
                 Home
               </Link>
+
+              <Link href={route("excursions.clientIndex")} className="hover:text-blue-200 transition">
+                Excursions
+              </Link>
+
               <Link href={route("apropos")} className="hover:text-blue-200 transition">
                 About
               </Link>
-              <Link href={route("contact")} className="hover:text-blue-200 transition">
-                Contact
-              </Link>
-              <Link
-                href={route("login")}
-                className="rounded-full bg-white/10 px-4 py-2 hover:bg-white/20 transition"
+
+              {/* WhatsApp only */}
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 hover:scale-105 transition-all duration-300 shadow-lg"
+                aria-label="Contact on WhatsApp"
               >
-                Login
-              </Link>
+                <FaWhatsapp className="h-5 w-5 text-white" />
+                <span className="text-white text-sm font-bold hidden lg:block">
+                  WhatsApp
+                </span>
+              </a>
             </nav>
 
             {/* Mobile menu button */}
@@ -75,6 +88,15 @@ export default function GuestLayout({ children }) {
                 >
                   Home
                 </Link>
+
+                <Link
+                  href={route("excursions.clientIndex")}
+                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+                  onClick={() => setOpen(false)}
+                >
+                  Excursions
+                </Link>
+
                 <Link
                   href={route("apropos")}
                   className="block rounded-xl px-3 py-2 hover:bg-white/10"
@@ -82,30 +104,26 @@ export default function GuestLayout({ children }) {
                 >
                   About
                 </Link>
-                <Link
-                  href={route("contact")}
-                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
+
+                {/* WhatsApp mobile */}
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-xl px-3 py-2 bg-[#25D366] hover:scale-105 transition text-white"
                   onClick={() => setOpen(false)}
                 >
-                  Contact
-                </Link>
-                <Link
-                  href={route("login")}
-                  className="block rounded-xl px-3 py-2 hover:bg-white/10"
-                  onClick={() => setOpen(false)}
-                >
-                  Login
-                </Link>
+                  <FaWhatsapp className="h-4 w-4" />
+                  WhatsApp
+                </a>
               </div>
             </div>
           )}
         </div>
       </header>
 
-      {/* MAIN (padding top pour header fixe) */}
-      <main className="flex-1">
-        {children}
-      </main>
+      {/* MAIN */}
+      <main className="flex-1 pt-16">{children}</main>
     </div>
   );
 }

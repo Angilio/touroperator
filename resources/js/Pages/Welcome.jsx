@@ -1,11 +1,14 @@
 import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import ExcursionPublicCard from "./ExcursionPublicCard";
 import FlashMessage from "@/Components/FlashMessage";
 import { motion } from "framer-motion";
 import { Compass, ShieldCheck, Gem } from "lucide-react";
 
 export default function Welcome({ excursions }) {
+  const whatsappNumber = "261325572786";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20I%20would%20like%20more%20information%20about%20your%20excursions`;
+
   const fadeUp = {
     hidden: { opacity: 0, y: 18 },
     show: {
@@ -51,10 +54,19 @@ export default function Welcome({ excursions }) {
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#popular"
+                  href={route("excursions.clientIndex")}
                   className="inline-flex justify-center rounded-full bg-blue-800 px-6 py-3 font-semibold text-white hover:bg-blue-500 transition"
                 >
                   Explore Excursions
+                </a>
+
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center rounded-full bg-green-500 px-6 py-3 font-semibold text-white hover:bg-green-600 transition"
+                >
+                  Contact us
                 </a>
               </div>
             </div>
@@ -93,7 +105,7 @@ export default function Welcome({ excursions }) {
 
             <motion.a
               variants={fadeUp}
-              href="#popular"
+              href={route("excursions.clientIndex")}
               className="inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-3 text-sm font-semibold hover:bg-black transition shadow-md"
             >
               Browse All Tours →
@@ -132,7 +144,7 @@ export default function Welcome({ excursions }) {
           >
             <motion.div variants={fadeUp} className="lg:col-span-5">
               <p className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
-                Why MadaTour
+                Why OZATour
               </p>
 
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
@@ -146,18 +158,13 @@ export default function Welcome({ excursions }) {
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#popular"
-                  className="inline-flex justify-center rounded-full bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition shadow-sm"
-                >
-                  Start exploring
-                </a>
-
-                <Link
-                  href={route("contact")}
-                  className="inline-flex justify-center rounded-full bg-gray-100 px-6 py-3 text-gray-900 font-semibold hover:bg-gray-200 transition"
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center rounded-full bg-green-500 px-6 py-3 text-white font-semibold hover:bg-green-600 transition"
                 >
                   Contact us
-                </Link>
+                </a>
               </div>
             </motion.div>
 
