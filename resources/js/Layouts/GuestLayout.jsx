@@ -47,7 +47,7 @@ export default function GuestLayout({ children }) {
             <Link href={route("welcome")} className="flex items-center gap-2">
               <ApplicationLogo className="h-10 w-auto object-contain" />
               <div className="leading-tight">
-                <p className="text-lg font-extrabold">OZATour</p>
+                <p className="text-lg font-extrabold">ObayaMadaTour</p>
                 <p className="text-xs text-white/70 hidden sm:block">
                   Explore Antsiranana
                 </p>
@@ -146,7 +146,7 @@ export default function GuestLayout({ children }) {
               <div className="flex items-center gap-2">
                 <ApplicationLogo className="h-9 w-auto object-contain" />
                 <div className="leading-tight">
-                  <p className="text-base font-extrabold">OZATour</p>
+                  <p className="text-base font-extrabold">ObayaMadaTour</p>
                   <p className="text-[11px] text-white/70">Menu</p>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function GuestLayout({ children }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-xl font-extrabold">OZATour</h3>
+            <h3 className="text-xl font-extrabold">ObayaMadaTour</h3>
             <p className="mt-3 text-sm text-white/80">
               Discover the beauty of Antsiranana with professional guides and
               authentic local experiences.
@@ -280,10 +280,10 @@ export default function GuestLayout({ children }) {
         </div>
 
         <div className="border-t border-white/10 text-center py-4 text-xs text-white/60">
-          © {new Date().getFullYear()} OZATour. All rights reserved. <br />
+          © {new Date().getFullYear()} ObayaMadaTour. All rights reserved. <br />
           Website created by{" "}
           <span className="font-semibold text-white">
-            MAZAVAMANANA Zeppélin Tiavy
+            MAZAVAMANANA Zeppélin Tiavy and RASOLONANDRASANA Angilio {/* DigitalForge */}
           </span>
           .
         </div>

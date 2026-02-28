@@ -144,7 +144,7 @@ export default function Welcome({ excursions }) {
           >
             <motion.div variants={fadeUp} className="lg:col-span-5">
               <p className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
-                Why OZATour
+                Why ObayaMadaTour
               </p>
 
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">

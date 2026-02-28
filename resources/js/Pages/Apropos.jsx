@@ -22,7 +22,7 @@ export default function Apropos() {
               </p>
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
-                About OZATour
+                About ObayaMadaTour
               </h1>
 
               <p className="mt-4 text-gray-900 text-sm sm:text-base leading-relaxed max-w-2xl">
@@ -128,7 +128,7 @@ export default function Apropos() {
             {/* Bottom strip */}
             <div className="border-t border-gray-100 bg-gray-50 px-6 sm:px-10 py-5">
               <p className="text-xs sm:text-sm text-gray-600">
-                OZATour • DIANA Region — Northern Madagascar • Discover • Explore • Enjoy
+                ObayaMadaTour • DIANA Region — Northern Madagascar • Discover • Explore • Enjoy
               </p>
             </div>
           </div>

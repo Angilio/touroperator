@@ -38,7 +38,7 @@ export default function ExcursionsIndex({ excursions }) {
           <div className="max-w-3xl text-white">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs sm:text-sm ring-1 ring-white/15 backdrop-blur">
               <MapPin className="h-4 w-4" />
-              OZATour • Antsiranana
+              ObayaMadaTour • Antsiranana
             </p>
 
             <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
