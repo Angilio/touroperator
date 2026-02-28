@@ -6,6 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+import "react-phone-number-input/style.css";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Tour Operator';
 

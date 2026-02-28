@@ -283,7 +283,7 @@ export default function GuestLayout({ children }) {
           © {new Date().getFullYear()} ObayaMadaTour. All rights reserved. <br />
           Website created by{" "}
           <span className="font-semibold text-white">
-            MAZAVAMANANA Zeppélin Tiavy and RASOLONANDRASANA Angilio {/* DigitalForge */}
+            MAZAVAMANANA Zeppélin Tiavy and RAZAFINDRASOLO Angilio {/* DigitalForge */}
           </span>
           .
         </div>
