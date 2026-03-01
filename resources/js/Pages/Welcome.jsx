@@ -4,10 +4,15 @@ import ExcursionPublicCard from "./ExcursionPublicCard";
 import FlashMessage from "@/Components/FlashMessage";
 import { motion } from "framer-motion";
 import { Compass, ShieldCheck, Gem } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Welcome({ excursions }) {
+  const { t } = useTranslation();
+
   const whatsappNumber = "261325572786";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20I%20would%20like%20more%20information%20about%20your%20excursions`;
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    t("homePage.whatsappText")
+  )}`;
 
   const fadeUp = {
     hidden: { opacity: 0, y: 18 },
@@ -25,7 +30,7 @@ export default function Welcome({ excursions }) {
 
   return (
     <GuestLayout>
-      <Head title="Home" />
+      <Head title={t("home")} />
       <FlashMessage />
 
       {/* HERO */}
@@ -39,17 +44,16 @@ export default function Welcome({ excursions }) {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-12">
             <div className="max-w-3xl text-white">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/10">
-                Antsiranana • Madagascar
+                {t("homePage.hero.badge")}
               </p>
 
               <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-                Discover Antsiranana{" "}
-                <span className="text-blue-200">Like Never Before</span>
+                {t("homePage.hero.title1")}{" "}
+                <span className="text-blue-200">{t("homePage.hero.title2")}</span>
               </h1>
 
               <p className="mt-4 text-base sm:text-lg text-white/90 max-w-2xl">
-                Explore stunning landscapes, unique adventures, and create unforgettable memories
-                with local guides and authentic destinations.
+                {t("homePage.hero.subtitle")}
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -57,7 +61,7 @@ export default function Welcome({ excursions }) {
                   href={route("excursions.clientIndex")}
                   className="inline-flex justify-center rounded-full bg-blue-800 px-6 py-3 font-semibold text-white hover:bg-blue-500 transition"
                 >
-                  Explore Excursions
+                  {t("homePage.hero.ctaExplore")}
                 </a>
 
                 <a
@@ -66,7 +70,7 @@ export default function Welcome({ excursions }) {
                   rel="noopener noreferrer"
                   className="inline-flex justify-center rounded-full bg-green-500 px-6 py-3 font-semibold text-white hover:bg-green-600 transition"
                 >
-                  Contact us
+                  {t("homePage.hero.ctaContact")}
                 </a>
               </div>
             </div>
@@ -91,15 +95,16 @@ export default function Welcome({ excursions }) {
           >
             <motion.div variants={fadeUp}>
               <p className="inline-flex items-center rounded-full bg-blue-100 px-4 py-1 text-xs font-semibold text-blue-700">
-                Featured Tours
+                {t("homePage.featured.badge")}
               </p>
 
               <h2 className="mt-4 text-4xl font-extrabold text-gray-900 leading-tight">
-                Discover Our <span className="text-blue-600">Top Experiences</span>
+                {t("homePage.featured.title1")}{" "}
+                <span className="text-blue-600">{t("homePage.featured.title2")}</span>
               </h2>
 
               <p className="mt-4 text-gray-600 max-w-2xl">
-                Carefully selected adventures designed to give you unforgettable memories in Antsiranana.
+                {t("homePage.featured.subtitle")}
               </p>
             </motion.div>
 
@@ -108,7 +113,7 @@ export default function Welcome({ excursions }) {
               href={route("excursions.clientIndex")}
               className="inline-flex items-center gap-2 rounded-full bg-gray-900 text-white px-6 py-3 text-sm font-semibold hover:bg-black transition shadow-md"
             >
-              Browse All Tours →
+              {t("homePage.featured.browseAll")}
             </motion.a>
           </motion.div>
 
@@ -144,16 +149,15 @@ export default function Welcome({ excursions }) {
           >
             <motion.div variants={fadeUp} className="lg:col-span-5">
               <p className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-blue-100">
-                Why ObayaMadaTour
+                {t("homePage.why.badge")}
               </p>
 
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-gray-900">
-                Why Travel With Us?
+                {t("homePage.why.title")}
               </h2>
 
               <p className="mt-3 text-gray-600">
-                We provide unique experiences with professional local guides,
-                authentic destinations, and top customer support.
+                {t("homePage.why.subtitle")}
               </p>
 
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -163,7 +167,7 @@ export default function Welcome({ excursions }) {
                   rel="noopener noreferrer"
                   className="inline-flex justify-center rounded-full bg-green-500 px-6 py-3 text-white font-semibold hover:bg-green-600 transition"
                 >
-                  Contact us
+                  {t("homePage.why.cta")}
                 </a>
               </div>
             </motion.div>
@@ -174,24 +178,24 @@ export default function Welcome({ excursions }) {
             >
               <motion.div variants={fadeUp}>
                 <FeatureWP
-                  title="Local Guides"
-                  desc="Explore with people who know every hidden spot."
+                  title={t("homePage.why.cards.guides.title")}
+                  desc={t("homePage.why.cards.guides.desc")}
                   icon={<Compass className="h-6 w-6" />}
                 />
               </motion.div>
 
               <motion.div variants={fadeUp}>
                 <FeatureWP
-                  title="Safe & Organized"
-                  desc="Clear programs, support and secure trips."
+                  title={t("homePage.why.cards.safe.title")}
+                  desc={t("homePage.why.cards.safe.desc")}
                   icon={<ShieldCheck className="h-6 w-6" />}
                 />
               </motion.div>
 
               <motion.div variants={fadeUp} className="sm:col-span-2">
                 <FeatureWP
-                  title="Best Value"
-                  desc="Great experiences at fair prices, with transparent pricing and top service."
+                  title={t("homePage.why.cards.value.title")}
+                  desc={t("homePage.why.cards.value.desc")}
                   icon={<Gem className="h-6 w-6" />}
                 />
               </motion.div>
@@ -212,12 +216,8 @@ function FeatureWP({ title, desc, icon }) {
         </div>
 
         <div>
-          <h3 className="font-extrabold text-lg text-gray-900">
-            {title}
-          </h3>
-          <p className="mt-2 text-sm text-gray-600">
-            {desc}
-          </p>
+          <h3 className="font-extrabold text-lg text-gray-900">{title}</h3>
+          <p className="mt-2 text-sm text-gray-600">{desc}</p>
         </div>
       </div>
     </div>

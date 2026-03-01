@@ -1,10 +1,13 @@
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head } from "@inertiajs/react";
-import ExcursionPublicCard from "@/Pages/ExcursionPublicCard"; // adapte le chemin si besoin
+import ExcursionPublicCard from "@/Pages/ExcursionPublicCard";
 import { motion } from "framer-motion";
-import { Sparkles, Filter, MapPin } from "lucide-react";
+import { Sparkles, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ExcursionsIndex({ excursions }) {
+  const { t } = useTranslation();
+
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.08 } },
@@ -24,7 +27,7 @@ export default function ExcursionsIndex({ excursions }) {
 
   return (
     <GuestLayout>
-      <Head title="Excursions" />
+      <Head title={t("excursionsPage.headTitle")} />
 
       {/* HERO */}
       <section className="relative overflow-hidden">
@@ -38,16 +41,15 @@ export default function ExcursionsIndex({ excursions }) {
           <div className="max-w-3xl text-white">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs sm:text-sm ring-1 ring-white/15 backdrop-blur">
               <MapPin className="h-4 w-4" />
-              ObayaMadaTour • Antsiranana
+              {t("excursionsPage.brandLine")}
             </p>
 
             <h1 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
-              Explore All Excursions
+              {t("excursionsPage.title")}
             </h1>
 
             <p className="mt-3 text-white/85 max-w-2xl text-sm sm:text-base leading-relaxed">
-              Browse all available experiences and discover your next adventure.
-              Handpicked tours, local guides, and unforgettable memories.
+              {t("excursionsPage.subtitle")}
             </p>
 
             {/* Quick bar */}
@@ -55,7 +57,7 @@ export default function ExcursionsIndex({ excursions }) {
               <div className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15 backdrop-blur">
                 <Sparkles className="h-4 w-4" />
                 <span className="text-sm font-semibold">
-                  {count} excursion{count > 1 ? "s" : ""} available
+                  {t("excursionsPage.availableCount", { count })}
                 </span>
               </div>
             </div>
@@ -69,10 +71,10 @@ export default function ExcursionsIndex({ excursions }) {
           {!excursions || excursions.length === 0 ? (
             <div className="rounded-3xl border border-gray-200 bg-white p-8 sm:p-10 text-center shadow-sm">
               <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                No excursions available yet
+                {t("excursionsPage.emptyTitle")}
               </h2>
               <p className="mt-2 text-sm sm:text-base text-gray-600">
-                Please check back later. New tours will be published soon.
+                {t("excursionsPage.emptySubtitle")}
               </p>
             </div>
           ) : (
@@ -81,16 +83,15 @@ export default function ExcursionsIndex({ excursions }) {
               <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900">
-                    Available Tours
+                    {t("excursionsPage.sectionTitle")}
                   </h2>
                   <p className="mt-1 text-sm text-gray-600">
-                    Click any card to view details, gallery and description.
+                    {t("excursionsPage.sectionSubtitle")}
                   </p>
                 </div>
 
                 <div className="text-sm text-gray-600">
-                  Showing <span className="font-semibold text-gray-900">{count}</span>{" "}
-                  result{count > 1 ? "s" : ""}
+                  {t("excursionsPage.showing", { count })}
                 </div>
               </div>
 

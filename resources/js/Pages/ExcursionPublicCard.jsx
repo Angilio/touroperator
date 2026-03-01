@@ -1,20 +1,25 @@
 import { Link } from "@inertiajs/react";
 import { useState, useEffect } from "react";
 import { MapPin, Clock, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ExcursionPublicCard({ excursion }) {
+  const { t } = useTranslation();
+
   const images = excursion.gallery ?? [];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     if (images.length <= 1) return;
+
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 4000);
+
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const price = Number(excursion.price).toLocaleString("fr-FR");
+  const price = Number(excursion.price || 0).toLocaleString("fr-FR");
 
   return (
     <Link
@@ -32,11 +37,11 @@ export default function ExcursionPublicCard({ excursion }) {
           />
         ) : (
           <div className="flex h-full items-center justify-center bg-gray-200 text-gray-400">
-            No image
+            {t("excursionCard.noImage")}
           </div>
         )}
 
-        {/* Overlay gradient premium */}
+        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
 
         {/* PRICE */}
@@ -46,28 +51,31 @@ export default function ExcursionPublicCard({ excursion }) {
 
         {/* CONTENT OVER IMAGE */}
         <div className="absolute bottom-6 left-6 right-6 text-white">
-
           <h3 className="text-2xl font-extrabold drop-shadow-lg group-hover:text-blue-300 transition">
             {excursion.title}
           </h3>
 
           <div className="mt-3 flex items-center gap-6 text-sm text-white/90">
-
+            {/* Type */}
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>{excursion.type_excursion?.type ?? "Excursion"}</span>
+              <span>
+                {excursion.type_excursion?.type ??
+                  t("excursionCard.defaultType")}
+              </span>
             </div>
 
+            {/* Duration */}
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4" />
-              <span>1 Day</span>
+              <span>{t("excursionCard.duration")}</span>
             </div>
 
+            {/* Group */}
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4" />
-              <span>Small group</span>
+              <span>{t("excursionCard.groupSize")}</span>
             </div>
-
           </div>
         </div>
       </div>

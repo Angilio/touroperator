@@ -1,5 +1,5 @@
 import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
 import { useMemo, useState } from "react";
 import ReservationModal from "./ReservationModal";
 import {
@@ -13,8 +13,11 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ShowExcursion({ excursion, types = [] }) {
+  const { t } = useTranslation();
+
   const images = useMemo(() => excursion?.gallery ?? [], [excursion?.gallery]);
   const hasImages = images.length > 0;
   const hasVideo = Boolean(excursion?.video);
@@ -26,6 +29,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
     if (!hasImages) return;
     setSelectedIndex(i);
   };
+
   const close = () => setSelectedIndex(null);
 
   const nextImage = () => {
@@ -44,9 +48,11 @@ export default function ShowExcursion({ excursion, types = [] }) {
     ? `/storage/${images[0].image_path}`
     : "/images/fonds/image1.jpg";
 
+  const pageTitle = excursion?.title ?? t("showExcursion.defaultTitle");
+
   return (
     <GuestLayout>
-      <Head title={excursion?.title ?? "Excursion"} />
+      <Head title={pageTitle} />
 
       {/* Booking modal */}
       <ReservationModal
@@ -72,7 +78,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur hover:bg-white/15 transition"
               >
                 <ArrowLeft className="h-4 w-4" />
-                Back
+                {t("showExcursion.back")}
               </button>
 
               {/* Right actions */}
@@ -82,13 +88,13 @@ export default function ShowExcursion({ excursion, types = [] }) {
                   onClick={() => setOpenBooking(true)}
                   className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-2 text-sm font-extrabold text-white shadow-lg hover:scale-[1.02] transition"
                 >
-                  Book now
+                  {t("showExcursion.bookNow")}
                 </button>
 
                 <div className="hidden sm:flex items-center gap-2">
                   <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
                     <Tag className="h-4 w-4" />
-                    {excursion?.type_excursion?.type ?? "Excursion"}
+                    {excursion?.type_excursion?.type ?? t("showExcursion.excursion")}
                   </span>
 
                   <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
@@ -103,18 +109,18 @@ export default function ShowExcursion({ excursion, types = [] }) {
             <div className="mt-10 sm:mt-14 max-w-3xl text-white">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs sm:text-sm ring-1 ring-white/15 backdrop-blur">
                 <MapPin className="h-4 w-4" />
-                Antsiranana • Madagascar
+                {t("showExcursion.location")}
               </p>
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
-                {excursion?.title ?? "Excursion"}
+                {pageTitle}
               </h1>
 
               {/* Mobile chips */}
               <div className="mt-4 flex flex-wrap gap-2 sm:hidden">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
                   <Tag className="h-4 w-4" />
-                  {excursion?.type_excursion?.type ?? "Excursion"}
+                  {excursion?.type_excursion?.type ?? t("showExcursion.excursion")}
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
                   <Euro className="h-4 w-4" />
@@ -136,7 +142,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-800 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-500 transition shadow-md shadow-black/20"
                     >
                       <Images className="h-4 w-4" />
-                      View Gallery
+                      {t("showExcursion.viewGallery")}
                     </button>
                   )}
 
@@ -146,7 +152,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-800 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-gray-500 transition"
                     >
                       <PlayCircle className="h-4 w-4" />
-                      Watch Video
+                      {t("showExcursion.watchVideo")}
                     </a>
                   )}
                 </div>
@@ -167,10 +173,10 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 <div className="rounded-3xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm">
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                      Gallery
+                      {t("showExcursion.gallery")}
                     </h2>
                     <p className="text-xs sm:text-sm text-gray-500">
-                      {images.length} photo{images.length > 1 ? "s" : ""}
+                      {images.length} {t("showExcursion.photo", { count: images.length })}
                     </p>
                   </div>
 
@@ -181,11 +187,11 @@ export default function ShowExcursion({ excursion, types = [] }) {
                         key={img.id}
                         onClick={() => openAt(index)}
                         className="group relative overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        aria-label={`Open image ${index + 1}`}
+                        aria-label={t("showExcursion.openImage", { n: index + 1 })}
                       >
                         <img
                           src={`/storage/${img.image_path}`}
-                          alt={`${excursion?.title ?? "Excursion"} ${index + 1}`}
+                          alt={`${pageTitle} ${index + 1}`}
                           className="h-36 sm:h-40 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                           loading="lazy"
                         />
@@ -196,7 +202,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 </div>
               ) : (
                 <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center text-gray-600 shadow-sm">
-                  No gallery images available for this excursion.
+                  {t("showExcursion.noImages")}
                 </div>
               )}
 
@@ -208,7 +214,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                      Video
+                      {t("showExcursion.video")}
                     </h2>
                   </div>
 
@@ -227,7 +233,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
             <div className="lg:col-span-5">
               <div className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
                 <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                  Description
+                  {t("showExcursion.description")}
                 </h2>
 
                 <div className="mt-4 prose prose-blue max-w-none text-gray-800 prose-p:leading-relaxed prose-li:leading-relaxed">
@@ -240,16 +246,18 @@ export default function ShowExcursion({ excursion, types = [] }) {
               </div>
 
               <div className="mt-8 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-600 p-6 sm:p-8 text-white shadow-lg">
-                <h3 className="text-lg font-extrabold">Need help?</h3>
+                <h3 className="text-lg font-extrabold">
+                  {t("showExcursion.needHelpTitle")}
+                </h3>
                 <p className="mt-2 text-white/90 text-sm">
-                  Contact us for schedules, meeting point, or booking information.
+                  {t("showExcursion.needHelpText")}
                 </p>
                 <div className="mt-5">
                   <button
                     onClick={() => setOpenBooking(true)}
                     className="inline-flex w-full items-center justify-center rounded-full bg-white/15 px-6 py-3 text-sm font-semibold ring-1 ring-white/25 hover:bg-white/20 transition"
                   >
-                    Book this excursion
+                    {t("showExcursion.bookThis")}
                   </button>
                 </div>
               </div>
@@ -264,7 +272,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={close}
             className="absolute right-4 top-4 sm:right-6 sm:top-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label="Close"
+            aria-label={t("showExcursion.close")}
           >
             <X className="h-6 w-6" />
           </button>
@@ -272,7 +280,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={prevImage}
             className="absolute left-3 top-1/2 -translate-y-1/2 sm:left-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label="Previous"
+            aria-label={t("showExcursion.prev")}
           >
             <ChevronLeft className="h-7 w-7" />
           </button>
@@ -280,7 +288,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={nextImage}
             className="absolute right-3 top-1/2 -translate-y-1/2 sm:right-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label="Next"
+            aria-label={t("showExcursion.next")}
           >
             <ChevronRight className="h-7 w-7" />
           </button>
@@ -288,7 +296,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <div className="h-full w-full flex items-center justify-center px-4">
             <img
               src={`/storage/${images[selectedIndex].image_path}`}
-              alt={`Image ${selectedIndex + 1}`}
+              alt={t("showExcursion.imageN", { n: selectedIndex + 1 })}
               className="max-h-[82vh] max-w-[92vw] rounded-3xl shadow-2xl"
             />
           </div>
@@ -304,11 +312,11 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       "relative overflow-hidden rounded-xl ring-2 transition",
                       i === selectedIndex ? "ring-blue-400" : "ring-transparent",
                     ].join(" ")}
-                    aria-label={`Select image ${i + 1}`}
+                    aria-label={t("showExcursion.selectImage", { n: i + 1 })}
                   >
                     <img
                       src={`/storage/${img.image_path}`}
-                      alt={`Thumb ${i + 1}`}
+                      alt={t("showExcursion.thumbN", { n: i + 1 })}
                       className="h-14 w-20 object-cover opacity-90 hover:opacity-100"
                       loading="lazy"
                     />

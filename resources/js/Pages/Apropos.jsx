@@ -1,11 +1,17 @@
 import { Head } from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
+import { useTranslation } from "react-i18next";
 import { MapPin, Mountain, Palmtree, Sparkles, ArrowRight } from "lucide-react";
 
 export default function Apropos() {
+  const { t } = useTranslation();
+
+  const whatsappLink =
+    "https://wa.me/261325572786?text=Hello%20I%20would%20like%20information%20about%20excursions%20in%20the%20DIANA%20region";
+
   return (
     <GuestLayout>
-      <Head title="About" />
+      <Head title={t("aboutPage.title")} />
 
       {/* HERO */}
       <section className="relative overflow-hidden">
@@ -18,16 +24,15 @@ export default function Apropos() {
             <div className="max-w-3xl text-white">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs sm:text-sm ring-1 ring-white/15 backdrop-blur">
                 <MapPin className="h-4 w-4" />
-                DIANA Region • Northern Madagascar
+                {t("aboutPage.hero.badge")}
               </p>
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
-                About ObayaMadaTour
+                {t("aboutPage.hero.heading")}
               </h1>
 
               <p className="mt-4 text-gray-900 text-sm sm:text-base leading-relaxed max-w-2xl">
-                Discover the natural wonders, culture, and unforgettable experiences of the DIANA
-                region — a true gem in the north of Madagascar.
+                {t("aboutPage.hero.subheading")}
               </p>
             </div>
           </div>
@@ -44,19 +49,15 @@ export default function Apropos() {
                 {/* Left */}
                 <div className="lg:col-span-7">
                   <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-                    Tourism in the DIANA Region
+                    {t("aboutPage.content.heading")}
                   </h2>
 
                   <p className="mt-4 text-gray-700 leading-relaxed">
-                    This website is dedicated to promoting tourism in the DIANA region, located in
-                    northern Madagascar. Our mission is to highlight the natural, cultural, and
-                    historical treasures of this exceptional area.
+                    {t("aboutPage.content.p1")}
                   </p>
 
                   <p className="mt-4 text-gray-700 leading-relaxed">
-                    Here you’ll find excursions, activities, and destinations such as beaches,
-                    nature parks, historical sites, and unique cultural experiences — carefully
-                    curated to help you plan an unforgettable trip.
+                    {t("aboutPage.content.p2")}
                   </p>
 
                   {/* Objective */}
@@ -66,57 +67,60 @@ export default function Apropos() {
                         <Sparkles className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-extrabold text-gray-900">Our objective</h3>
+                        <h3 className="font-extrabold text-gray-900">
+                          {t("aboutPage.objective.title")}
+                        </h3>
                         <p className="mt-2 text-sm text-gray-700 leading-relaxed">
-                          Promote local tourism in the DIANA region by making it easy to discover
-                          information and book excursions — while supporting local tourism actors.
+                          {t("aboutPage.objective.desc")}
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Right: Features */}
+                {/* Right */}
                 <div className="lg:col-span-5">
                   <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
                     <h3 className="text-lg font-extrabold text-gray-900">
-                      Why visit DIANA?
+                      {t("aboutPage.why.title")}
                     </h3>
 
                     <div className="mt-5 space-y-4">
                       <Feature
                         icon={<Palmtree className="h-5 w-5" />}
-                        title="Exceptional landscapes"
-                        desc="Beaches, bays, and breathtaking views you won’t find anywhere else."
+                        title={t("aboutPage.why.items.landscapes.title")}
+                        desc={t("aboutPage.why.items.landscapes.desc")}
                       />
                       <Feature
                         icon={<Mountain className="h-5 w-5" />}
-                        title="Nature & adventure"
-                        desc="Hikes, parks, and outdoor activities for every level."
+                        title={t("aboutPage.why.items.adventure.title")}
+                        desc={t("aboutPage.why.items.adventure.desc")}
                       />
                       <Feature
                         icon={<MapPin className="h-5 w-5" />}
-                        title="Authentic culture"
-                        desc="Meet locals, discover traditions, and enjoy real Malagasy hospitality."
+                        title={t("aboutPage.why.items.culture.title")}
+                        desc={t("aboutPage.why.items.culture.desc")}
                       />
                     </div>
                   </div>
 
                   {/* CTA */}
                   <div className="mt-6 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-600 p-6 text-white shadow-lg">
-                    <h4 className="text-lg font-extrabold">Need help planning?</h4>
+                    <h4 className="text-lg font-extrabold">
+                      {t("aboutPage.cta.title")}
+                    </h4>
                     <p className="mt-2 text-sm text-white/90">
-                      Contact us for recommendations, schedules, and booking assistance.
+                      {t("aboutPage.cta.desc")}
                     </p>
 
                     <div className="mt-5">
                       <a
-                        href="https://wa.me/261325572786?text=Hello%20I%20would%20like%20information%20about%20excursions%20in%20the%20DIANA%20region"
+                        href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white/15 px-6 py-3 text-sm font-semibold ring-1 ring-white/25 hover:bg-white/20 transition"
                       >
-                        Contact on WhatsApp
+                        {t("aboutPage.cta.button")}
                         <ArrowRight className="h-4 w-4" />
                       </a>
                     </div>
@@ -128,7 +132,7 @@ export default function Apropos() {
             {/* Bottom strip */}
             <div className="border-t border-gray-100 bg-gray-50 px-6 sm:px-10 py-5">
               <p className="text-xs sm:text-sm text-gray-600">
-                ObayaMadaTour • DIANA Region — Northern Madagascar • Discover • Explore • Enjoy
+                {t("aboutPage.footerStrip")}
               </p>
             </div>
           </div>

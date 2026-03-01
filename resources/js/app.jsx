@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import "react-phone-number-input/style.css";
+import "./lang/i18n";
 
 const appName = import.meta.env.VITE_APP_NAME || 'Tour Operator';
 
