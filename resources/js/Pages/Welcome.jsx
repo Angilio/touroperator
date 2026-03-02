@@ -78,7 +78,6 @@ export default function Welcome({ excursions }) {
         </div>
       </section>
 
-      {/* POPULAR EXCURSIONS */}
       <section
         id="popular"
         className="relative py-20 overflow-hidden bg-gradient-to-br from-white via-blue-50 to-indigo-50"
@@ -137,7 +136,6 @@ export default function Welcome({ excursions }) {
         </div>
       </section>
 
-      {/* WHY */}
       <section className="bg-white py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
