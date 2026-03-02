@@ -1,0 +1,702 @@
+{
+  "_ApplicationLogo-C9FI9pQi.js": {
+    "file": "assets/ApplicationLogo-C9FI9pQi.js",
+    "name": "ApplicationLogo",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_AuthenticatedLayout-BrLPcJ8S.js": {
+    "file": "assets/AuthenticatedLayout-BrLPcJ8S.js",
+    "name": "AuthenticatedLayout",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js"
+    ]
+  },
+  "_ConfirmDeleteModal-Bk7z3vUn.js": {
+    "file": "assets/ConfirmDeleteModal-Bk7z3vUn.js",
+    "name": "ConfirmDeleteModal",
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal-CsSDPA7S.js",
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_FlashMessage-BDbouSpF.js": {
+    "file": "assets/FlashMessage-BDbouSpF.js",
+    "name": "FlashMessage",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_GuestLayout-CM-__1KZ.js": {
+    "file": "assets/GuestLayout-CM-__1KZ.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.jsx",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "_InputError--xgDMHBU.js": {
+    "file": "assets/InputError--xgDMHBU.js",
+    "name": "InputError",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_InputLabel-CkjIconZ.js": {
+    "file": "assets/InputLabel-CkjIconZ.js",
+    "name": "InputLabel",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_Modal-CsSDPA7S.js": {
+    "file": "assets/Modal-CsSDPA7S.js",
+    "name": "Modal",
+    "imports": [
+      "resources/js/app.jsx",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "_PrimaryButton-TGWqcMU4.js": {
+    "file": "assets/PrimaryButton-TGWqcMU4.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_SidebarMenu-ByabUm-Z.js": {
+    "file": "assets/SidebarMenu-ByabUm-Z.js",
+    "name": "SidebarMenu",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js"
+    ]
+  },
+  "_arrow-left-DRmx07Ib.js": {
+    "file": "assets/arrow-left-DRmx07Ib.js",
+    "name": "arrow-left",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_createLucideIcon-B07wh1CB.js": {
+    "file": "assets/createLucideIcon-B07wh1CB.js",
+    "name": "createLucideIcon",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_map-pin-C5ZLhu-D.js": {
+    "file": "assets/map-pin-C5ZLhu-D.js",
+    "name": "map-pin",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_pen-B-E1KR0c.js": {
+    "file": "assets/pen-B-E1KR0c.js",
+    "name": "pen",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_plus-AoXjvw48.js": {
+    "file": "assets/plus-AoXjvw48.js",
+    "name": "plus",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_proxy-C7BLbef2.js": {
+    "file": "assets/proxy-C7BLbef2.js",
+    "name": "proxy",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_sparkles-CSygN8WE.js": {
+    "file": "assets/sparkles-CSygN8WE.js",
+    "name": "sparkles",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_tag-CCJh4v0x.js": {
+    "file": "assets/tag-CCJh4v0x.js",
+    "name": "tag",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_transition-D2iXGv73.js": {
+    "file": "assets/transition-D2iXGv73.js",
+    "name": "transition",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_useTranslation-Be4FzXWW.js": {
+    "file": "assets/useTranslation-Be4FzXWW.js",
+    "name": "useTranslation",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_users-B9Eo-tMr.js": {
+    "file": "assets/users-B9Eo-tMr.js",
+    "name": "users",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "_x-lo368nr7.js": {
+    "file": "assets/x-lo368nr7.js",
+    "name": "x",
+    "imports": [
+      "_createLucideIcon-B07wh1CB.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Admin/Admin.jsx": {
+    "file": "assets/Admin-QoEaXDf0.js",
+    "name": "Admin",
+    "src": "resources/js/Pages/Admin/Admin/Admin.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_FlashMessage-BDbouSpF.js",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "resources/js/Pages/Admin/Admin/CreateAdminModal.jsx",
+      "_plus-AoXjvw48.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_Modal-CsSDPA7S.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Admin/CreateAdminModal.jsx": {
+    "file": "assets/CreateAdminModal-DGaDtGsL.js",
+    "name": "CreateAdminModal",
+    "src": "resources/js/Pages/Admin/Admin/CreateAdminModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal-CsSDPA7S.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Admin/ExcursionType/CreateExcursionTypeModal.jsx": {
+    "file": "assets/CreateExcursionTypeModal-fQsARfKl.js",
+    "name": "CreateExcursionTypeModal",
+    "src": "resources/js/Pages/Admin/ExcursionType/CreateExcursionTypeModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal-CsSDPA7S.js",
+      "_InputLabel-CkjIconZ.js",
+      "_InputError--xgDMHBU.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Admin/ExcursionType/ExcursionType.jsx": {
+    "file": "assets/ExcursionType-CobfWXoB.js",
+    "name": "ExcursionType",
+    "src": "resources/js/Pages/Admin/ExcursionType/ExcursionType.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_FlashMessage-BDbouSpF.js",
+      "resources/js/Pages/Admin/ExcursionType/CreateExcursionTypeModal.jsx",
+      "_ConfirmDeleteModal-Bk7z3vUn.js",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "_plus-AoXjvw48.js",
+      "_tag-CCJh4v0x.js",
+      "_pen-B-E1KR0c.js",
+      "_Modal-CsSDPA7S.js",
+      "_transition-D2iXGv73.js",
+      "_InputLabel-CkjIconZ.js",
+      "_InputError--xgDMHBU.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_SidebarMenu-ByabUm-Z.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Excursions/CreateUpdateExcursion/ExcursionForm.jsx": {
+    "file": "assets/ExcursionForm-DryvpJeb.js",
+    "name": "ExcursionForm",
+    "src": "resources/js/Pages/Admin/Excursions/CreateUpdateExcursion/ExcursionForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js"
+    ],
+    "css": [
+      "assets/ExcursionForm-D32Un0ak.css"
+    ]
+  },
+  "resources/js/Pages/Admin/Excursions/Excursions.jsx": {
+    "file": "assets/Excursions-DR9eHgcE.js",
+    "name": "Excursions",
+    "src": "resources/js/Pages/Admin/Excursions/Excursions.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_FlashMessage-BDbouSpF.js",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "resources/js/Pages/Admin/Excursions/Partials/ExcursionCard.jsx",
+      "_plus-AoXjvw48.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js",
+      "_ConfirmDeleteModal-Bk7z3vUn.js",
+      "_Modal-CsSDPA7S.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Excursions/Partials/ExcursionCard.jsx": {
+    "file": "assets/ExcursionCard-BCON9i9H.js",
+    "name": "ExcursionCard",
+    "src": "resources/js/Pages/Admin/Excursions/Partials/ExcursionCard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_ConfirmDeleteModal-Bk7z3vUn.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_Modal-CsSDPA7S.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Reservations/Reservations.jsx": {
+    "file": "assets/Reservations-D1aX5Ww8.js",
+    "name": "Reservations",
+    "src": "resources/js/Pages/Admin/Reservations/Reservations.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js"
+    ]
+  },
+  "resources/js/Pages/Admin/Statistique/Statistique.jsx": {
+    "file": "assets/Statistique-CXQz1VGt.js",
+    "name": "Statistique",
+    "src": "resources/js/Pages/Admin/Statistique/Statistique.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js"
+    ]
+  },
+  "resources/js/Pages/Admin/TypeVoyages/CreateTypeVoyageModal.jsx": {
+    "file": "assets/CreateTypeVoyageModal-C0Gg2lx8.js",
+    "name": "CreateTypeVoyageModal",
+    "src": "resources/js/Pages/Admin/TypeVoyages/CreateTypeVoyageModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal-CsSDPA7S.js",
+      "_InputLabel-CkjIconZ.js",
+      "_InputError--xgDMHBU.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Admin/TypeVoyages/TypeVoyages.jsx": {
+    "file": "assets/TypeVoyages-5PTR7exU.js",
+    "name": "TypeVoyages",
+    "src": "resources/js/Pages/Admin/TypeVoyages/TypeVoyages.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "_FlashMessage-BDbouSpF.js",
+      "resources/js/Pages/Admin/TypeVoyages/CreateTypeVoyageModal.jsx",
+      "_ConfirmDeleteModal-Bk7z3vUn.js",
+      "_plus-AoXjvw48.js",
+      "_tag-CCJh4v0x.js",
+      "_pen-B-E1KR0c.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_Modal-CsSDPA7S.js",
+      "_InputLabel-CkjIconZ.js",
+      "_InputError--xgDMHBU.js"
+    ]
+  },
+  "resources/js/Pages/Apropos.jsx": {
+    "file": "assets/Apropos-Ioas48Qr.js",
+    "name": "Apropos",
+    "src": "resources/js/Pages/Apropos.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_sparkles-CSygN8WE.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_x-lo368nr7.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ConfirmPassword.jsx": {
+    "file": "assets/ConfirmPassword-D-pTZ5Sz.js",
+    "name": "ConfirmPassword",
+    "src": "resources/js/Pages/Auth/ConfirmPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword-9jroqyyT.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-CUy4HVOI.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_FlashMessage-BDbouSpF.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-Bn_-den9.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-CQCSacKm.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/SetPassword.jsx": {
+    "file": "assets/SetPassword-DmvkBMMJ.js",
+    "name": "SetPassword",
+    "src": "resources/js/Pages/Auth/SetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.jsx": {
+    "file": "assets/VerifyEmail-pjriU5Xt.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_GuestLayout-CM-__1KZ.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/ExcursionPublicCard.jsx": {
+    "file": "assets/ExcursionPublicCard-DB7azdH1.js",
+    "name": "ExcursionPublicCard",
+    "src": "resources/js/Pages/ExcursionPublicCard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_useTranslation-Be4FzXWW.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_users-B9Eo-tMr.js"
+    ]
+  },
+  "resources/js/Pages/ExcursionsIndex.jsx": {
+    "file": "assets/ExcursionsIndex-oTXSkWb3.js",
+    "name": "ExcursionsIndex",
+    "src": "resources/js/Pages/ExcursionsIndex.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "resources/js/Pages/ExcursionPublicCard.jsx",
+      "_useTranslation-Be4FzXWW.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_sparkles-CSygN8WE.js",
+      "_proxy-C7BLbef2.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_x-lo368nr7.js",
+      "_users-B9Eo-tMr.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Edit.jsx": {
+    "file": "assets/Edit-CaJZT_MU.js",
+    "name": "Edit",
+    "src": "resources/js/Pages/Profile/Edit.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrLPcJ8S.js",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_transition-D2iXGv73.js",
+      "_SidebarMenu-ByabUm-Z.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_Modal-CsSDPA7S.js",
+      "_PrimaryButton-TGWqcMU4.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx": {
+    "file": "assets/DeleteUserForm-DrUrKIlU.js",
+    "name": "DeleteUserForm",
+    "src": "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_Modal-CsSDPA7S.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx": {
+    "file": "assets/UpdatePasswordForm-BCAgMXQZ.js",
+    "name": "UpdatePasswordForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx": {
+    "file": "assets/UpdateProfileInformationForm-rGARo8PJ.js",
+    "name": "UpdateProfileInformationForm",
+    "src": "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError--xgDMHBU.js",
+      "_InputLabel-CkjIconZ.js",
+      "_PrimaryButton-TGWqcMU4.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/ReservationModal.jsx": {
+    "file": "assets/ReservationModal-C1ku6ghG.js",
+    "name": "ReservationModal",
+    "src": "resources/js/Pages/ReservationModal.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Modal-CsSDPA7S.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_x-lo368nr7.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Reservations.jsx": {
+    "file": "assets/Reservations-B1ojQRHo.js",
+    "name": "Reservations",
+    "src": "resources/js/Pages/Reservations.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "_InputLabel-CkjIconZ.js",
+      "_InputError--xgDMHBU.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_arrow-left-DRmx07Ib.js",
+      "_users-B9Eo-tMr.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_tag-CCJh4v0x.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js"
+    ]
+  },
+  "resources/js/Pages/ShowExcursion.jsx": {
+    "file": "assets/ShowExcursion-DOPUCcc3.js",
+    "name": "ShowExcursion",
+    "src": "resources/js/Pages/ShowExcursion.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "resources/js/Pages/ReservationModal.jsx",
+      "_useTranslation-Be4FzXWW.js",
+      "_arrow-left-DRmx07Ib.js",
+      "_tag-CCJh4v0x.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_x-lo368nr7.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_Modal-CsSDPA7S.js",
+      "_transition-D2iXGv73.js"
+    ]
+  },
+  "resources/js/Pages/Welcome.jsx": {
+    "file": "assets/Welcome-CDQ18Ryh.js",
+    "name": "Welcome",
+    "src": "resources/js/Pages/Welcome.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_GuestLayout-CM-__1KZ.js",
+      "resources/js/Pages/ExcursionPublicCard.jsx",
+      "_FlashMessage-BDbouSpF.js",
+      "_useTranslation-Be4FzXWW.js",
+      "_proxy-C7BLbef2.js",
+      "_createLucideIcon-B07wh1CB.js",
+      "_ApplicationLogo-C9FI9pQi.js",
+      "_x-lo368nr7.js",
+      "_map-pin-C5ZLhu-D.js",
+      "_users-B9Eo-tMr.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-zwVWZfDZ.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Admin/Admin/Admin.jsx",
+      "resources/js/Pages/Admin/Admin/CreateAdminModal.jsx",
+      "resources/js/Pages/Admin/ExcursionType/CreateExcursionTypeModal.jsx",
+      "resources/js/Pages/Admin/ExcursionType/ExcursionType.jsx",
+      "resources/js/Pages/Admin/Excursions/CreateUpdateExcursion/ExcursionForm.jsx",
+      "resources/js/Pages/Admin/Excursions/Excursions.jsx",
+      "resources/js/Pages/Admin/Excursions/Partials/ExcursionCard.jsx",
+      "resources/js/Pages/Admin/Reservations/Reservations.jsx",
+      "_SidebarMenu-ByabUm-Z.js",
+      "resources/js/Pages/Admin/Statistique/Statistique.jsx",
+      "resources/js/Pages/Admin/TypeVoyages/CreateTypeVoyageModal.jsx",
+      "resources/js/Pages/Admin/TypeVoyages/TypeVoyages.jsx",
+      "resources/js/Pages/Apropos.jsx",
+      "resources/js/Pages/Auth/ConfirmPassword.jsx",
+      "resources/js/Pages/Auth/ForgotPassword.jsx",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/Auth/SetPassword.jsx",
+      "resources/js/Pages/Auth/VerifyEmail.jsx",
+      "resources/js/Pages/ExcursionPublicCard.jsx",
+      "resources/js/Pages/ExcursionsIndex.jsx",
+      "resources/js/Pages/Profile/Edit.jsx",
+      "resources/js/Pages/Profile/Partials/DeleteUserForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdatePasswordForm.jsx",
+      "resources/js/Pages/Profile/Partials/UpdateProfileInformationForm.jsx",
+      "resources/js/Pages/ReservationModal.jsx",
+      "resources/js/Pages/Reservations.jsx",
+      "resources/js/Pages/ShowExcursion.jsx",
+      "resources/js/Pages/Welcome.jsx"
+    ],
+    "css": [
+      "assets/app-EoMjbepy.css"
+    ]
+  }
+}
