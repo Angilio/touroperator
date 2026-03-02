@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Excursion;
 
-class Type_excursion extends Model
+class TypeExcursion extends Model
 {
     protected $fillable = [
         'type',

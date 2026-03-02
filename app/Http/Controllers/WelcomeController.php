@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Excursion;
-use App\Models\Type_voyage;
+use App\Models\TypeVoyage;
 use Inertia\Inertia;
 
 class WelcomeController extends Controller
@@ -31,7 +31,7 @@ class WelcomeController extends Controller
     public function showClient(Excursion $excursion)
     {
         $excursion->load('gallery', 'type_excursion');
-        $types = Type_voyage::all();
+        $types = TypeVoyage::all();
 
         return Inertia::render('ShowExcursion', [
             'excursion' => $excursion,

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Excursion;
-use App\Models\Type_voyage;
+use App\Models\TypeVoyage;
 use App\Models\Reservation;
 use Inertia\Inertia;
 
@@ -24,7 +24,7 @@ class ReservationController extends Controller
     {
         return Inertia::render('Reservations', [
             'excursion' => $excursion,
-            'types' => Type_voyage::all(),
+            'types' => TypeVoyage::all(),
         ]);
     }
 

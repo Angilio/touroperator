@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Reservation;
 
-class Type_voyage extends Model
+class TypeVoyage extends Model
 {
     protected $fillable = [
         'typevoyage',

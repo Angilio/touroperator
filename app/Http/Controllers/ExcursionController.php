@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Excursion;
 use App\Models\ExcursionGallery;
-use App\Models\Type_excursion;
+use App\Models\TypeExcursion;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\Http\Requests\StoreExcursionRequest;
@@ -16,7 +16,7 @@ class ExcursionController extends Controller
 {
     public function clientIndex()
     {
-        $excursions = Excursion::with(['gallery', 'type_excursion'])->get();
+        $excursions = Excursion::with(['gallery', 'TypeExcursion'])->get();
 
         return inertia('ExcursionsIndex', [
             'excursions' => $excursions
@@ -34,7 +34,7 @@ class ExcursionController extends Controller
 
     public function create()
     {
-        $types = Type_excursion::all();
+        $types = TypeExcursion::all();
         return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
             'types' => $types
         ]);
@@ -73,7 +73,7 @@ class ExcursionController extends Controller
     public function edit(Excursion $excursion)
     {
         $excursion->load('gallery');
-        $types = Type_excursion::all();
+        $types = TypeExcursion::all();
 
         return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
             'excursion' => [

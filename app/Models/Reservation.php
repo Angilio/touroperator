@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Excursion;
+use App\Models\TypeVoyage;
 
 class Reservation extends Model
 {
@@ -24,6 +26,6 @@ class Reservation extends Model
 
     public function type_voyage()
     {
-        return $this->belongsTo(type_voyage::class, 'type_voyage_id');
+        return $this->belongsTo(TypeVoyage::class, 'type_voyage_id');
     }
 }

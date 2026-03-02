@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Type_voyage;
+use App\Models\TypeVoyage;
 use Inertia\Inertia;
 
 class TypeVoyageController extends Controller
 {
     public function index()
     {
-        $typeVoyages = Type_voyage::all();
+        $typeVoyages = TypeVoyage::all();
         return Inertia::render('Admin/TypeVoyages/TypeVoyages', [
             'typeVoyages' => $typeVoyages
         ]);
@@ -22,14 +22,14 @@ class TypeVoyageController extends Controller
             'typevoyage' => 'required|string|max:255',
         ]);
 
-        Type_voyage::create([
+        TypeVoyage::create([
             'typevoyage' => $request->typevoyage,
         ]);
 
         return redirect()->route('type-voyages.index')->with('success', 'Type de voyage ajouté');
     }
 
-    public function update(Request $request, Type_voyage $typeVoyage)
+    public function update(Request $request, TypeVoyage $typeVoyage)
     {
         $request->validate([
             'typevoyage' => 'required|string|max:255',
@@ -42,7 +42,7 @@ class TypeVoyageController extends Controller
         return redirect()->route('type-voyages.index')->with('success', 'Type de voyage modifié');
     }
 
-    public function destroy(Type_voyage $typeVoyage)
+    public function destroy(TypeVoyage $typeVoyage)
     {
         $typeVoyage->delete();
 

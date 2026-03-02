@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ExcursionGallery;
 use App\Models\Reservation;
-use App\Models\Type_excursion;
+use App\Models\TypeExcursion;
 
 class Excursion extends Model
 {
@@ -20,7 +20,7 @@ class Excursion extends Model
 
     public function type_excursion()
     {
-        return $this->belongsTo(Type_excursion::class, 'type_excursion_id');
+        return $this->belongsTo(TypeExcursion::class, 'type_excursion_id');
     }
 
     public function reservations()

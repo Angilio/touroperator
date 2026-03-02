@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Type_excursion;
+use App\Models\TypeExcursion;
 use Inertia\Inertia;
 use App\Http\Requests\StoreExcursionTypeRequest;
 use App\Http\Requests\UpdateExcursionTypeRequest;
@@ -12,7 +12,7 @@ class ExcursionTypeController extends Controller
 {
     public function index()
     {
-        $types = Type_excursion::all();
+        $types = TypeExcursion::all();
         return inertia('Admin/ExcursionType/ExcursionType', [
             'types' => $types,
         ]);
@@ -20,7 +20,7 @@ class ExcursionTypeController extends Controller
 
     public function store(StoreExcursionTypeRequest $request)
     {
-        Type_excursion::create([
+        TypeExcursion::create([
             'type' => $request->type,
         ]);
 
@@ -30,7 +30,7 @@ class ExcursionTypeController extends Controller
 
     public function update(UpdateExcursionTypeRequest $request, $id)
     {
-        $type = Type_excursion::findOrFail($id);
+        $type = TypeExcursion::findOrFail($id);
 
         $type->update([
             'type' => $request->type,
@@ -42,7 +42,7 @@ class ExcursionTypeController extends Controller
 
     public function destroy($id)
     {
-        $type = Type_excursion::findOrFail($id);
+        $type = TypeExcursion::findOrFail($id);
         $type->delete();
 
         return redirect()->back()
