@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('short_description');
             $table->text('description');
             $table->decimal('price');
-            $table->string('video');
-            $table->foreignId('type_excursion_id')->constrained('type_excursions')->onDelete('cascade');
+            $table->string('video')->nullable();
+            $table->foreignId('ville_excursion_id')->constrained('ville_excursions')->onDelete('cascade');
             $table->timestamps();
         });
     }

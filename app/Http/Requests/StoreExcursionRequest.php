@@ -26,7 +26,7 @@ class StoreExcursionRequest extends FormRequest
             'short_description' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
-            'type_excursion_id' => 'required|exists:type_excursions,id',
+            'ville_excursion_id' => 'required|exists:ville_excursions,id',
 
             'video' => 'nullable|file|mimetypes:video/mp4,video/quicktime,video/x-msvideo|max:51200',
 

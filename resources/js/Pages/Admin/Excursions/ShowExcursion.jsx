@@ -1,7 +1,6 @@
-import GuestLayout from "@/Layouts/GuestLayout";
-import { Head } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head, Link, router } from "@inertiajs/react";
 import { useMemo, useState } from "react";
-import ReservationModal from "./ReservationModal";
 import {
   ArrowLeft,
   MapPin,
@@ -12,18 +11,16 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
+  Pencil,
+  Trash2,
 } from "lucide-react";
-import { useTranslation } from "react-i18next";
 
-export default function ShowExcursion({ excursion, types = [] }) {
-  const { t } = useTranslation();
-
+export default function ShowExcursion({ excursion }) {
   const images = useMemo(() => excursion?.gallery ?? [], [excursion?.gallery]);
   const hasImages = images.length > 0;
   const hasVideo = Boolean(excursion?.video);
 
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [openBooking, setOpenBooking] = useState(false);
 
   const openAt = (i) => {
     if (!hasImages) return;
@@ -48,24 +45,24 @@ export default function ShowExcursion({ excursion, types = [] }) {
     ? `/storage/${images[0].image_path}`
     : "/images/fonds/image1.jpg";
 
-  const pageTitle = excursion?.title ?? t("showExcursion.defaultTitle");
+  const pageTitle = excursion?.title ?? "Détails excursion";
+
+  const onDelete = () => {
+    if (!excursion?.id) return;
+    const ok = confirm("Supprimer cette excursion ? Cette action est irréversible.");
+    if (!ok) return;
+
+    router.delete(route("excursions.destroy", excursion.id));
+  };
 
   return (
-    <GuestLayout>
+    <AuthenticatedLayout>
       <Head title={pageTitle} />
-
-      {/* Booking modal */}
-      <ReservationModal
-        show={openBooking}
-        onClose={() => setOpenBooking(false)}
-        excursion={excursion}
-        types={types}
-      />
 
       {/* HERO */}
       <section className="relative">
         <div
-          className="relative min-h-[55vh] sm:min-h-[62vh] md:min-h-[70vh] bg-cover bg-center pt-14"
+          className="relative min-h-[45vh] sm:min-h-[52vh] md:min-h-[60vh] bg-cover bg-center pt-14"
           style={{ backgroundImage: `url('${heroUrl}')` }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-gray-50" />
@@ -78,30 +75,27 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur hover:bg-white/15 transition"
               >
                 <ArrowLeft className="h-4 w-4" />
-                {t("showExcursion.back")}
+                Retour
               </button>
 
-              {/* Right actions */}
+              {/* Actions admin */}
               <div className="flex items-center gap-2">
-                {/* BOOK BUTTON */}
-                <button
-                  onClick={() => setOpenBooking(true)}
-                  className="inline-flex items-center justify-center rounded-full bg-[#25D366] px-5 py-2 text-sm font-extrabold text-white shadow-lg hover:scale-[1.02] transition"
+                <Link
+                  href={route("excursions.edit", excursion.id)}
+                  className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2 text-sm font-extrabold text-white shadow-lg hover:scale-[1.02] transition"
                 >
-                  {t("showExcursion.bookNow")}
+                  <Pencil className="h-4 w-4" />
+                  Modifier
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={onDelete}
+                  className="inline-flex items-center gap-2 rounded-full bg-red-600 px-5 py-2 text-sm font-extrabold text-white shadow-lg hover:scale-[1.02] transition"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Supprimer
                 </button>
-
-                <div className="hidden sm:flex items-center gap-2">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
-                    <Tag className="h-4 w-4" />
-                    {excursion?.ville_excursion?.ville ?? t("showExcursion.excursion")}
-                  </span>
-
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
-                    <Euro className="h-4 w-4" />
-                    {price} €
-                  </span>
-                </div>
               </div>
             </div>
 
@@ -109,19 +103,19 @@ export default function ShowExcursion({ excursion, types = [] }) {
             <div className="mt-10 sm:mt-14 max-w-3xl text-white">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs sm:text-sm ring-1 ring-white/15 backdrop-blur">
                 <MapPin className="h-4 w-4" />
-                {t("showExcursion.location")}
+                Admin • Excursions
               </p>
 
               <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight drop-shadow">
                 {pageTitle}
               </h1>
 
-              {/* Mobile chips */}
-              <div className="mt-4 flex flex-wrap gap-2 sm:hidden">
+              <div className="mt-4 flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
                   <Tag className="h-4 w-4" />
-                  {excursion?.ville_excursion?.ville ?? t("showExcursion.excursion")}
+                  {excursion?.ville_excursion?.ville ?? "Ville non définie"}
                 </span>
+
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur">
                   <Euro className="h-4 w-4" />
                   {price} €
@@ -142,7 +136,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-blue-800 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-500 transition shadow-md shadow-black/20"
                     >
                       <Images className="h-4 w-4" />
-                      {t("showExcursion.viewGallery")}
+                      Voir la galerie
                     </button>
                   )}
 
@@ -152,7 +146,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       className="inline-flex items-center justify-center gap-2 rounded-full bg-gray-800 px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-gray-500 transition"
                     >
                       <PlayCircle className="h-4 w-4" />
-                      {t("showExcursion.watchVideo")}
+                      Voir la vidéo
                     </a>
                   )}
                 </div>
@@ -173,10 +167,10 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 <div className="rounded-3xl border border-gray-200 bg-white p-4 sm:p-6 shadow-sm">
                   <div className="flex items-center justify-between gap-3">
                     <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                      {t("showExcursion.gallery")}
+                      Galerie
                     </h2>
                     <p className="text-xs sm:text-sm text-gray-500">
-                      {images.length} {t("showExcursion.photo", { count: images.length })}
+                      {images.length} photo{images.length > 1 ? "s" : ""}
                     </p>
                   </div>
 
@@ -187,7 +181,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                         key={img.id}
                         onClick={() => openAt(index)}
                         className="group relative overflow-hidden rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        aria-label={t("showExcursion.openImage", { n: index + 1 })}
+                        aria-label={`Ouvrir image ${index + 1}`}
                       >
                         <img
                           src={`/storage/${img.image_path}`}
@@ -202,7 +196,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 </div>
               ) : (
                 <div className="rounded-3xl border border-gray-200 bg-white p-8 text-center text-gray-600 shadow-sm">
-                  {t("showExcursion.noImages")}
+                  Aucune image dans la galerie.
                 </div>
               )}
 
@@ -214,7 +208,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                      {t("showExcursion.video")}
+                      Vidéo
                     </h2>
                   </div>
 
@@ -233,7 +227,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
             <div className="lg:col-span-5">
               <div className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
                 <h2 className="text-lg sm:text-xl font-extrabold text-gray-900">
-                  {t("showExcursion.description")}
+                  Description
                 </h2>
 
                 <div className="mt-4 prose prose-blue max-w-none text-gray-800 prose-p:leading-relaxed prose-li:leading-relaxed">
@@ -245,19 +239,55 @@ export default function ShowExcursion({ excursion, types = [] }) {
                 </div>
               </div>
 
-              <div className="mt-8 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-600 p-6 sm:p-8 text-white shadow-lg">
-                <h3 className="text-lg font-extrabold">
-                  {t("showExcursion.needHelpTitle")}
-                </h3>
-                <p className="mt-2 text-white/90 text-sm">
-                  {t("showExcursion.needHelpText")}
-                </p>
-                <div className="mt-5">
-                  <button
-                    onClick={() => setOpenBooking(true)}
-                    className="inline-flex w-full items-center justify-center rounded-full bg-white/15 px-6 py-3 text-sm font-semibold ring-1 ring-white/25 hover:bg-white/20 transition"
+              {/* Info bloc */}
+              <div className="mt-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-700 p-6 sm:p-8 text-white shadow-lg">
+                <h3 className="text-lg font-extrabold">Infos rapides</h3>
+
+                <div className="mt-4 grid grid-cols-1 gap-3 text-sm">
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15">
+                    <span className="opacity-90">ID</span>
+                    <span className="font-semibold">{excursion?.id ?? "-"}</span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15">
+                    <span className="opacity-90">Ville</span>
+                    <span className="font-semibold">
+                      {excursion?.ville_excursion?.ville ?? "-"}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15">
+                    <span className="opacity-90">Prix</span>
+                    <span className="font-semibold">{price} €</span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15">
+                    <span className="opacity-90">Images</span>
+                    <span className="font-semibold">{images.length}</span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3 ring-1 ring-white/15">
+                    <span className="opacity-90">Vidéo</span>
+                    <span className="font-semibold">{hasVideo ? "Oui" : "Non"}</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 flex flex-col gap-3">
+                  <Link
+                    href={route("excursions.edit", excursion.id)}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-white/15 px-6 py-3 text-sm font-semibold ring-1 ring-white/25 hover:bg-white/20 transition"
                   >
-                    {t("showExcursion.bookThis")}
+                    <Pencil className="h-4 w-4" />
+                    Modifier cette excursion
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={onDelete}
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-red-500/90 px-6 py-3 text-sm font-semibold hover:bg-red-500 transition"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Supprimer
                   </button>
                 </div>
               </div>
@@ -272,7 +302,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={close}
             className="absolute right-4 top-4 sm:right-6 sm:top-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label={t("showExcursion.close")}
+            aria-label="Fermer"
           >
             <X className="h-6 w-6" />
           </button>
@@ -280,7 +310,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={prevImage}
             className="absolute left-3 top-1/2 -translate-y-1/2 sm:left-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label={t("showExcursion.prev")}
+            aria-label="Précédent"
           >
             <ChevronLeft className="h-7 w-7" />
           </button>
@@ -288,7 +318,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <button
             onClick={nextImage}
             className="absolute right-3 top-1/2 -translate-y-1/2 sm:right-6 rounded-full bg-white/10 p-2 text-white hover:bg-white/15 transition"
-            aria-label={t("showExcursion.next")}
+            aria-label="Suivant"
           >
             <ChevronRight className="h-7 w-7" />
           </button>
@@ -296,7 +326,7 @@ export default function ShowExcursion({ excursion, types = [] }) {
           <div className="h-full w-full flex items-center justify-center px-4">
             <img
               src={`/storage/${images[selectedIndex].image_path}`}
-              alt={t("showExcursion.imageN", { n: selectedIndex + 1 })}
+              alt={`Image ${selectedIndex + 1}`}
               className="max-h-[82vh] max-w-[92vw] rounded-3xl shadow-2xl"
             />
           </div>
@@ -312,11 +342,11 @@ export default function ShowExcursion({ excursion, types = [] }) {
                       "relative overflow-hidden rounded-xl ring-2 transition",
                       i === selectedIndex ? "ring-blue-400" : "ring-transparent",
                     ].join(" ")}
-                    aria-label={t("showExcursion.selectImage", { n: i + 1 })}
+                    aria-label={`Miniature ${i + 1}`}
                   >
                     <img
                       src={`/storage/${img.image_path}`}
-                      alt={t("showExcursion.thumbN", { n: i + 1 })}
+                      alt={`Thumb ${i + 1}`}
                       className="h-14 w-20 object-cover opacity-90 hover:opacity-100"
                       loading="lazy"
                     />
@@ -327,6 +357,6 @@ export default function ShowExcursion({ excursion, types = [] }) {
           </div>
         </div>
       )}
-    </GuestLayout>
+    </AuthenticatedLayout>
   );
 }

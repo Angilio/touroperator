@@ -11,7 +11,7 @@ class WelcomeController extends Controller
 {
     public function welcome()
     {
-        $excursions = Excursion::with(['gallery', 'type_excursion'])->latest()->get();
+        $excursions = Excursion::with(['gallery', 'ville_excursion'])->latest()->get();
 
         return inertia::render('Welcome', [
             'excursions' => $excursions
@@ -30,7 +30,7 @@ class WelcomeController extends Controller
 
     public function showClient(Excursion $excursion)
     {
-        $excursion->load('gallery', 'type_excursion');
+        $excursion->load('gallery', 'ville_excursion');
         $types = TypeVoyage::all();
 
         return Inertia::render('ShowExcursion', [

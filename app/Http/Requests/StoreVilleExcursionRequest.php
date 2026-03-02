@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateExcursionTypeRequest extends FormRequest
+class StoreVilleExcursionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class UpdateExcursionTypeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => 'required|string|max:255|unique:type_excursions,type,' . $this->route('id'),
+            'ville' => 'required|string|max:255|unique:ville_excursions,ville',
         ];
     }
 }

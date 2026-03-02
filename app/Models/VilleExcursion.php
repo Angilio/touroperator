@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Excursion;
 
-class TypeExcursion extends Model
+class VilleExcursion extends Model
 {
     protected $fillable = [
-        'type',
+        'ville',
     ];
 
     public function excursions()
     {
-        return $this->hasMany(Excursion::class, 'type_excursion_id');
+        return $this->hasMany(Excursion::class, 'ville_excursion_id');
     }
 }

@@ -5,9 +5,9 @@ import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import InputError from '@/Components/InputError';
 
-export default function CreateExcursionTypeModal({ show, onClose, editingType = null }) {
+export default function CreateVilleExcursionModal({ show, onClose, editingVille = null }) {
     const { data, setData, post, put, processing, errors, reset } = useForm({
-        type: editingType?.type || '',
+        ville: editingVille?.ville ?? '',
     });
 
     const closeModal = () => {
@@ -16,25 +16,26 @@ export default function CreateExcursionTypeModal({ show, onClose, editingType = 
     };
 
     useEffect(() => {
-        if (!show) {
-            reset();
-        }
+        if (!show) reset();
     }, [show]);
+
+    // Important: si editingVille change (quand tu passes en mode edit), mets à jour le champ
+    useEffect(() => {
+        setData('ville', editingVille?.ville ?? '');
+    }, [editingVille]);
 
     const submit = (e) => {
         e.preventDefault();
 
-        if (editingType) {
-            // Mise à jour
-            put(route('excursion-types.update', editingType.id), {
+        if (editingVille) {
+            put(route('ville-excursions.update', editingVille.id), {
                 onSuccess: () => {
                     reset();
                     onClose();
                 },
             });
         } else {
-            // Ajout
-            post(route('excursion-types.store'), {
+            post(route('ville-excursions.store'), {
                 onSuccess: () => {
                     reset();
                     onClose();
@@ -56,21 +57,21 @@ export default function CreateExcursionTypeModal({ show, onClose, editingType = 
                 </button>
 
                 <h2 className="mb-4 text-lg font-semibold text-blue-800">
-                    {editingType ? 'Modifier le type d’excursion' : 'Ajouter un type d’excursion'}
+                    {editingVille ? 'Modifier la ville d’excursion' : 'Ajouter une ville d’excursion'}
                 </h2>
 
                 <div className="mb-4">
-                    <InputLabel htmlFor="type" value="Nom du type" />
+                    <InputLabel htmlFor="ville" value="Nom de la ville" />
                     <TextInput
-                        id="type"
+                        id="ville"
                         type="text"
-                        value={data.type}
-                        onChange={(e) => setData('type', e.target.value)}
-                        placeholder="Ex : Aventure, Culturelle, Nature..."
+                        value={data.ville ?? ''}          // jamais undefined
+                        onChange={(e) => setData('ville', e.target.value)}
+                        placeholder="Ex : Antsiranana, Nosy Be..."
                         className="mt-1 w-full"
                         isFocused={true}
                     />
-                    <InputError message={errors.type} className="mt-1" />
+                    <InputError message={errors.ville} className="mt-1" />
                 </div>
 
                 <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
@@ -87,7 +88,7 @@ export default function CreateExcursionTypeModal({ show, onClose, editingType = 
                         disabled={processing}
                         className="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700 disabled:opacity-50"
                     >
-                        {editingType ? 'Mettre à jour' : 'Enregistrer'}
+                        {editingVille ? 'Mettre à jour' : 'Enregistrer'}
                     </button>
                 </div>
             </form>

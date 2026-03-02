@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Excursion;
 use App\Models\ExcursionGallery;
-use App\Models\TypeExcursion;
+use App\Models\VilleExcursion;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\Http\Requests\StoreExcursionRequest;
@@ -16,7 +16,7 @@ class ExcursionController extends Controller
 {
     public function clientIndex()
     {
-        $excursions = Excursion::with(['gallery', 'TypeExcursion'])->get();
+        $excursions = Excursion::with(['gallery', 'ville_excursion'])->get();
 
         return inertia('ExcursionsIndex', [
             'excursions' => $excursions
@@ -32,11 +32,20 @@ class ExcursionController extends Controller
         ]);
     }
 
+    public function show(Excursion $excursion)
+    {
+        $excursion->load(['gallery', 'ville_excursion']);
+
+        return inertia('Admin/Excursions/ShowExcursion', [
+            'excursion' => $excursion
+        ]);
+    }
+
     public function create()
     {
-        $types = TypeExcursion::all();
+        $villes = VilleExcursion::all();
         return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
-            'types' => $types
+            'villes' => $villes
         ]);
     }
 
@@ -73,7 +82,7 @@ class ExcursionController extends Controller
     public function edit(Excursion $excursion)
     {
         $excursion->load('gallery');
-        $types = TypeExcursion::all();
+        $villes = VilleExcursion::all();
 
         return inertia('Admin/Excursions/CreateUpdateExcursion/ExcursionForm', [
             'excursion' => [
@@ -82,7 +91,7 @@ class ExcursionController extends Controller
                 'short_description' => $excursion->short_description,
                 'description' => $excursion->description,
                 'price' => $excursion->price,
-                'type_excursion_id' => $excursion->type_excursion_id,
+                'ville_excursion_id' => $excursion->ville_excursion_id,
                 'video_url' => $excursion->video
                     ? asset('storage/' . $excursion->video)
                     : null,
@@ -91,7 +100,7 @@ class ExcursionController extends Controller
                     'url' => asset('storage/' . $img->image_path),
                 ]),
             ],
-            'types' => $types,
+            'villes' => $villes,
             'mode' => 'edit',
         ]);
     }

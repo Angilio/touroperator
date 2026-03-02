@@ -13,7 +13,7 @@ export default function SidebarMenu() {
     const menuItems = [
         { name: 'Statistique', route: 'statistique.index', icon: BarChart2 },
         { name: 'Admin', route: 'admins.index', icon: User },
-        { name: "Type d'excursion", route: 'excursion-types.index', icon: Tag },
+        { name: "Villes d'excursion", route: 'ville-excursions.index', icon: Tag },
         { name: 'Excursions', route: 'excursions.index', icon: Truck },
         { name: 'Type de voyage', route: 'type-voyages.index', icon: Plane },
         { name: 'Réservations', route: 'reservations.index', icon: CalendarCheck },

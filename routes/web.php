@@ -12,7 +12,7 @@ Route::get('/excursion-client/{excursion}', [WelcomeController::class, 'showClie
 
 require __DIR__.'/auth.php';
 require __DIR__.'/excursions.php';
-require __DIR__.'/excursionTypes.php';
+require __DIR__.'/villesExcursion.php';
 require __DIR__.'/admins.php';
 require __DIR__.'/statistique.php';
 require __DIR__.'/profile.php';

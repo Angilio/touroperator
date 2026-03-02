@@ -2,37 +2,37 @@ import { useState } from 'react';
 import { Plus, Tag, Edit2, Trash2 } from 'lucide-react';
 import { router, Head } from '@inertiajs/react';
 import FlashMessage from '@/Components/FlashMessage';
-import CreateExcursionTypeModal from './CreateExcursionTypeModal';
+import CreateVilleExcursionModal from './CreateVilleExcursionModal';
 import ConfirmDeleteModal from '@/Components/ConfirmDeleteModal';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 
-export default function ExcursionType({ types = [] }) {
+export default function VilleExcursion({ villes = [] }) {
     const [showModal, setShowModal] = useState(false);
-    const [editingType, setEditingType] = useState(null);
+    const [editingVille, setEditingVille] = useState(null);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [typeToDelete, setTypeToDelete] = useState(null);
+    const [villeToDelete, setVilleToDelete] = useState(null);
 
     const openDeleteModal = (id) => {
-        setTypeToDelete(id);
+        setVilleToDelete(id);
         setShowDeleteModal(true);
     };
 
     const openAddModal = () => {
-        setEditingType(null);
+        setEditingVille(null);
         setShowModal(true);
     };
 
-    const openEditModal = (type) => {
-        setEditingType(type);
+    const openEditModal = (ville) => {
+        setEditingVille(ville);
         setShowModal(true);
     };
 
     const confirmDelete = () => {
-        if (typeToDelete) {
-            router.delete(route('excursion-types.destroy', typeToDelete), {
+        if (villeToDelete) {
+            router.delete(route('ville-excursions.destroy', villeToDelete), {
                 onFinish: () => {
                     setShowDeleteModal(false);
-                    setTypeToDelete(null);
+                    setVilleToDelete(null);
                 },
             });
         }
@@ -40,29 +40,29 @@ export default function ExcursionType({ types = [] }) {
 
     return (
         <AuthenticatedLayout
-            header={<h2 className="text-xl font-semibold text-blue-800">Types d’excursions</h2>}
+            header={<h2 className="text-xl font-semibold text-blue-800">Villes d’excursions</h2>}
         >
-            <Head title="Types d’excursions" />
+            <Head title="Villes d’excursions" />
             <div className="text-blue-800">
                 {/* Header */}
                 <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-lg font-semibold">Types d’excursions</h3>
+                    <h3 className="text-lg font-semibold">Villes d’excursions</h3>
 
                     <button
                         onClick={openAddModal}
                         className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700 sm:w-auto"
                     >
                         <Plus size={16} />
-                        Ajouter un type
+                        Ajouter une ville d’excursion
                     </button>
                 </div>
 
                 <FlashMessage />
 
                 {/* Liste */}
-                {types.length > 0 ? (
+                {villes.length > 0 ? (
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {types.map((item) => (
+                        {villes.map((item) => (
                             <div
                                 key={item.id}
                                 className="flex flex-col gap-4 rounded-xl border border-blue-100 bg-white p-4 shadow transition hover:shadow-md sm:flex-row sm:items-center sm:justify-between"
@@ -72,7 +72,7 @@ export default function ExcursionType({ types = [] }) {
                                         <Tag className="h-6 w-6 text-blue-600" />
                                     </div>
                                     <p className="text-base font-medium text-blue-800">
-                                        {item.type}
+                                        {item.ville}
                                     </p>
                                 </div>
 
@@ -98,15 +98,15 @@ export default function ExcursionType({ types = [] }) {
                     </div>
                 ) : (
                     <div className="rounded-lg border border-dashed border-blue-200 py-12 text-center text-blue-500">
-                        Aucun type d’excursion enregistré
+                        Aucune ville d’excursion enregistrée
                     </div>
                 )}
 
                 {showModal && (
-                    <CreateExcursionTypeModal
+                    <CreateVilleExcursionModal
                         show={showModal}
                         onClose={() => setShowModal(false)}
-                        editingType={editingType}
+                        editingVille={editingVille}
                     />
                 )}
 
@@ -114,8 +114,8 @@ export default function ExcursionType({ types = [] }) {
                     show={showDeleteModal}
                     onClose={() => setShowDeleteModal(false)}
                     onConfirm={confirmDelete}
-                    title="Supprimer le type d'excursion"
-                    message="Cette action est définitive. Voulez-vous vraiment supprimer ce type d’excursion ?"
+                    title="Supprimer la ville d’excursion"
+                    message="Cette action est définitive. Voulez-vous vraiment supprimer cette ville d’excursion ?"
                 />
             </div>
         </AuthenticatedLayout>

@@ -6,14 +6,14 @@ import InputLabel from '@/Components/InputLabel';
 import InputError from '@/Components/InputError';
 import RichTextEditor from '@/Components/RichTextEditor';
 
-export default function ExcursionForm({ excursion = null, types = [], errors = {}, mode = 'create' }) {
+export default function ExcursionForm({ excursion = null, villes = [], errors = {}, mode = 'create' }) {
     const [formData, setFormData] = useState({
         title: excursion?.title || '',
         short_description: excursion?.short_description || '',
         description: excursion?.description || '',
         price: excursion?.price || '',
         video: null,
-        type_excursion_id: excursion?.type_excursion_id || '',
+        ville_excursion_id: excursion?.ville_excursion_id || '',
         images: [],
     });
 
@@ -51,7 +51,7 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
         data.append('short_description', formData.short_description);
         data.append('description', formData.description);
         data.append('price', formData.price);
-        data.append('type_excursion_id', formData.type_excursion_id);
+        data.append('ville_excursion_id', formData.ville_excursion_id);
 
         if (formData.video) {
             data.append('video', formData.video);
@@ -306,23 +306,23 @@ export default function ExcursionForm({ excursion = null, types = [], errors = {
                     <InputError message={errors.video} className="mt-1" />
                 </div>
 
-                {/* Type d'excursion */}
+                {/* Ville d'excursion */}
                 <div>
-                    <InputLabel value="Type d'excursion" htmlFor="type_excursion_id" />
+                    <InputLabel value="Ville d'excursion" htmlFor="ville_excursion_id" />
                     <select
-                        name="type_excursion_id"
-                        value={formData.type_excursion_id}
+                        name="ville_excursion_id"
+                        value={formData.ville_excursion_id}
                         onChange={handleChange}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                     >
-                        <option value="">Sélectionner un type</option>
-                        {types.map((t) => (
+                        <option value="">Sélectionner une ville</option>
+                        {villes.map((t) => (
                             <option key={t.id} value={t.id}>
-                                {t.type}
+                                {t.ville}
                             </option>
                         ))}
                     </select>
-                    <InputError message={errors.type_excursion_id} className="mt-1" />
+                    <InputError message={errors.ville_excursion_id} className="mt-1" />
                 </div>
 
                 {/* Submit */}
