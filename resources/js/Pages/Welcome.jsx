@@ -33,7 +33,6 @@ export default function Welcome({ excursions }) {
       <Head title={t("home")} />
       <FlashMessage />
 
-      {/* HERO */}
       <section className="relative overflow-hidden">
         <div
           className="relative min-h-[72vh] md:min-h-[80vh] bg-cover bg-center"
