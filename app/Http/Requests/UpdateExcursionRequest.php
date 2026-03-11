@@ -22,8 +22,8 @@ class UpdateExcursionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'short_description' => 'required|string|max:255',
+            'title' => 'required|string|max:140',
+            'short_description' => 'required|string|max:140',
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'ville_excursion_id' => 'required|exists:ville_excursions,id',

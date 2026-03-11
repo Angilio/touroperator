@@ -7,7 +7,7 @@ export default function Apropos() {
   const { t } = useTranslation();
 
   const whatsappLink =
-    "https://wa.me/261325572786?text=Hello%20I%20would%20like%20information%20about%20excursions%20in%20the%20DIANA%20region";
+    "https://wa.me/261343253904?text=Hello%20I%20would%20like%20information%20about%20excursions%20in%20the%20DIANA%20region";
 
   return (
     <GuestLayout>

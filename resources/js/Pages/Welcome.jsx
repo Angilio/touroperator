@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 export default function Welcome({ excursions }) {
   const { t } = useTranslation();
 
-  const whatsappNumber = "261325572786";
+  const whatsappNumber = "261343253904";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
     t("homePage.whatsappText")
   )}`;

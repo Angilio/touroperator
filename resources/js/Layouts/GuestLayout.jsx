@@ -23,7 +23,7 @@ export default function GuestLayout({ children }) {
 
   const { t, i18n } = useTranslation();
 
-  const whatsappNumber = "261325572786";
+  const whatsappNumber = "261343253904";
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hello%20I%20am%20interested%20in%20your%20excursions`;
 
   // Langue par défaut = en
