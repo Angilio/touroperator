@@ -178,6 +178,6 @@ export default {
         noImage: "Aucune image",
         defaultType: "Excursion",
         duration: "1 Jour",
-        groupSize: "Petit groupe",
+        groupSize: "Groupe",
     },
 };
